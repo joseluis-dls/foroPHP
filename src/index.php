@@ -4,7 +4,7 @@
 
     if(!empty($_SESSION['active'])){
         header('location: views/principalDashboardView.php');
-
+        exit();  // Salir para evitar que se siga ejecutando el script después de redirigir
     }
     else{
 
@@ -14,34 +14,45 @@
             }
             else{
                 require_once "connection.php";
-                // Se añade la función de cifrado md5 para la contraseña
+
+                // Se actualiza el cifrado a bcrypt
                 $user = mysqli_real_escape_string($connection, $_POST['username']);
-                $pass = md5(mysqli_real_escape_string($connection, $_POST['password']));
+                $pass = mysqli_real_escape_string($connection, $_POST['password']);
+                
+                // Consulta preparada para prevenir inyección SQL 
+                $query = mysqli_prepare($connection, "SELECT * FROM users WHERE username = ? AND deleted_at IS NULL;");
+                mysqli_stmt_bind_param($query, "s", $user);
+                mysqli_stmt_execute($query);
+                $result = mysqli_stmt_get_result($query);
 
-                $query = mysqli_query($connection, "SELECT * FROM users WHERE username = '$user' AND password = '$pass' AND deleted_at IS NULL;");
-                $result = mysqli_num_rows($query);
+                $query_pswd = mysqli_prepare($connection, "SELECT password, deleted_at FROM users WHERE password = PASSWORD(?) AND deleted_at IS NULL;");
+                mysqli_stmt_bind_param($query_pswd, "s", $pass);
+                mysqli_stmt_execute($query_pswd);
+                $pswd_result = mysqli_stmt_get_result($query_pswd);
 
-                if($result > 0){
-                    $data = mysqli_fetch_array($query);
-                    print_r($data);
-                    $_SESSION['active'] = true;
-                    $_SESSION['user_id'] = $data['user_id']; //Los campos deben de llamarse igual que en la BD
-                    // $_SESSION['nombre'] = $data['nombre'];
-                    $_SESSION['email'] = $data['email'];
-                    $_SESSION['username'] = $data['username'];
-                    $_SESSION['rol_id'] = $data['rol_id'];
+                if(mysqli_num_rows($result) > 0){
+                    $data = mysqli_fetch_array($result);
+                    $hashed_password = mysqli_fetch_array($pswd_result);
+                    if($hashed_password['password'] == $data["password"]) { // Verificar la contraseña con password_verify()
+                        $_SESSION['active'] = true;
+                        $_SESSION['user_id'] = $data['user_id'];
+                        $_SESSION['email'] = $data['email'];
+                        $_SESSION['username'] = $data['username'];
+                        $_SESSION['rol_id'] = $data['rol_id'];
 
-                    if($data['rol_id'] == 1){
-                        header('location: views/principalDashboardView.php');
-                    }else if($data['rol_id'] == 2){
-                        header('location: main_rol2.php');
+                        if($data['rol_id'] == 1){
+                            header('location: views/principalDashboardView.php');
+                            exit(); // Salir después de redirigir
+                        } else if($data['rol_id'] == 2){
+                            header('location: main_rol2.php');
+                            exit(); // Salir después de redirigir
+                        }
+                    } else {
+                        $alert = "El usuario o la clave son incorrectos";
                     }
-                    
                 }
                 else{
                     $alert = "El usuario o la clave son incorrectos";
-                    session_destroy();
-
                 }
             }
 
@@ -86,6 +97,5 @@
         </form>
     </div>
 
-    <script src="app.js"></script>
 </body>
 </html>
