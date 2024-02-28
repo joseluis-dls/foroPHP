@@ -19,7 +19,7 @@
             <ul>
                 <li><a href=""><img src="../img/001-notificacin.png" alt=""></a></li>
                 <li><a href=""><img src="../img//002-avatar.png" alt=""></a></li>
-                <li><a href=""><img src="../img//003-cerrar-sesion.png" alt=""></a></li>
+                <li><a href="../exit.php"><img src="../img//003-cerrar-sesion.png" alt="cerrar-sesión" ></a></li>
             </ul>
         </div>
     </div>
