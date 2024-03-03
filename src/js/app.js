@@ -146,3 +146,4 @@ function agregarFila(id, rol, nombre) {
     `;
     userTable.appendChild(newRow);
 }
+
