@@ -9,43 +9,31 @@
     /* font-size: 40px; */
 }
 
-body {
-    /* Remove default margin and padding */
-    margin: 0;
-    padding: 0;
 
-    /* Imagen de fondo */
-    /* background-image: url("https://images.pexels.com/photos/7444978/pexels-photo-7444978.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");  */
-    background-size: cover;
-}
-
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url("https://img.freepik.com/fotos-premium/imagenes-fondo-abstracto-fondo-pantalla-ai-generado_643360-61547.jpg?w=826");
-    background-size: cover;
-    filter: blur(145px); /* Apply the filter effect to the background */
-    z-index: -1;
-    background-repeat: no-repeat;
-}
-/* Estilos del encabezado */
-/* Estilos del login */
 
 #Login {
     position: absolute;
+    display: flex;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 500px;
-    padding: 20px;
+    width: 80%;
+    height: 600px;
     background-color: #F9F9F9; 
     box-shadow: -20px 40px 40px 10px rgba(0, 0, 0, 0.3); /* Sombra */
     border-radius: 10px;
     z-index: 1;
+}
+
+.presentationLoginDiv{
+    background-color: rgb(38, 38, 101);
+    width: 50%;
+    height: 600px;
+}
+
+.formLoginDiv{
+    width: 50%;
+    height: 600px;
 }
 #Login header {
     text-align: center;
@@ -67,10 +55,14 @@ body::before {
 }
 
 #Login input {
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid ;
-    border-radius: 4px;
+    font-size: 15px;
+    width: 70%;
+    height: 40px;
+    margin-left: 15%;
+    margin-bottom: 2%;
+    border-radius: 25px;
+    padding-left: 5%;
+    border: 1px solid rgb(155, 150, 150);
 }
 
 .buttons {
@@ -95,7 +87,7 @@ body::before {
  box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
  transition: all 250ms;
  overflow: hidden;
- width: 800px;
+ width: 70%;
 }
 
 #LoginForm button::before {
@@ -136,4 +128,82 @@ body::before {
 
 .terminos a:hover {
     text-decoration: underline; 
+}
+
+.textBienvenida{
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 80%;
+    margin-left: 10%;
+    text-align: center;
+}
+
+.textBienvenida h3{
+    color: rgb(159, 157, 157);
+    padding-bottom: 3%;
+}
+
+.textBienvenida h1{
+    font-size: 38px;
+    padding-bottom: 3%;
+    color: #3b4b99;
+}
+
+.centroTextoImagen{
+    text-align: center;
+    width: 70%;
+    height: 200px;
+    margin-left: 15%;
+
+    margin-top: 25%;
+}
+
+.centroTextoImagen h1{
+    color: white;
+    font-size: 50px;
+    font-weight: 800;
+    padding-bottom: 5%;
+}
+
+.centroTextoImagen p{
+    color: white;
+    font-weight: 100;
+    font-size: 15px;
+}
+
+.button_register{
+    width: 70%;
+    height: 50px;
+    margin-left: 15%;
+}
+
+.button_register button{
+    padding: 15px 25px;
+    border: unset;
+    border-radius: 15px;
+    color: #fbfbfb;
+    z-index: 1;
+    background: #364486;
+    cursor: pointer;
+    position: relative;
+    font-weight: 1000;
+    font-size: 17px;
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    transition: all 250ms;
+    overflow: hidden;
+    width: 100%;
+}
+
+.terminos_login{
+    margin-top: 1%;
+    margin-bottom: 1%;
+    color: rgb(0, 0, 0); 
+    font-size: 12px;
+    text-align: center;
+}
+
+.alert{
+    margin-left: 15%;
+    font-weight: 800;
 }
