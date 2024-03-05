@@ -4,73 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../styles/princiaplDahboardView.css">
+    <link rel="stylesheet" href="../styles/publisStyles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
 
-    <div class="headerNavPrincipal">
-        <div class="logoDiv">
-            <h1>Blog</h1>
-        </div>
-        <div class="navbar">
-            <input type="text" placeholder="Busca sobre ...">
-        </div>
-        <div class="socialMediaBar">
-            <ul>
-                <li><a href=""><img src="../img/001-notificacin.png" alt=""></a></li>
-                <li><a href=""><img src="../img//002-avatar.png" alt=""></a></li>
-                <li><a href="../exit.php"><img src="../img//003-cerrar-sesion.png" alt="cerrar-sesión" ></a></li>
-            </ul>
-        </div>
+<nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top" style="    box-shadow: -20px 40px 40px 10px rgba(0, 0, 0, 0.3);">
+  <div class="container-fluid">
+    <!-- Columna izquierda: logo o título -->
+    <div class="col-md-4">
+      <a class="navbar-brand" href="#">UNESforum</a>
     </div>
 
-    <div class="bodySection">
-        <div class="leftSideBodySection"></div>
-        <div class="publicacionesDivSection">
-            <div class="headerNav">
-                <h2>Forums</h2>
-                <div class="navbarForum">
-                    <ul>
-                        <li class="li-selected">Popular</li>
-                        <li>Featured</li>
-                        <li>Recent</li>
-                        <li>Unanswered</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="publicaionesSection">
-                <div class="publicacionDivCard">
-                    <div class="headerDivCard">
-                        <div class="textCardDiv">
-                        <img src="https://s2.abcstatics.com/media/estilo/2017/02/08/cara-kwm-U202521250342CmC-620x650@abc.jpg" alt="">
-                            <div class="textcard">
-                                <h2>I have only recently found this particular keyboard.</h2>
-                                <h4>Posted By: Martín Serna 8 hours ago</h4>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut alias assumenda earum, quia quae necessitatibus iure qui quo quas aspernatur reiciendis eius aliquam ad esse exercitationem quibusdam veniam error ea.</p>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="imagesDiv">
-                        <img src="https://www.otroangulo.info/fabricaweb/wp-content/uploads/Paz-amor-no-guerra.jpg" alt="">
-                    </div>
-
-                    <div class="divReactionAndComment">
-                    <div class="ReactionDiv">
-                        <button>Like</button>
-                    </div>
-
-                    <div class="commentDiv">
-                        <input type="text" placeholder="Write a comment">
-                    </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        <div class="rigthSectionDiv"></div>
+    <!-- Columna central: buscador -->
+    <div class="col-md-4 text-center"> <!-- Agregado text-center -->
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
     </div>
-    
+
+    <!-- Columna derecha: iconos de notificaciones, configuración y cerrar sesión -->
+    <div class="col-md-4 text-end">
+      <ul class="navbar-nav justify-content-end">
+        <li class="nav-item">
+          <a class="nav-link" href="#"><i class="fas fa-bell">Notificaciones</i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"><i class="fas fa-user-cog">Cuenta</i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../exit.php"><i class="fas fa-sign-out-alt">Cerrar Sesión</i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="section_publis">
+  <div class="leftSide">
+      <div class="divLeftSidePresentation">
+        <div class="imgPresntacionLeft"><img src="https://b2472105.smushcdn.com/2472105/wp-content/uploads/2023/01/Perfil-Profesional-_63-819x1024.jpg?lossy=1&strip=1&webp=1" alt=""></div>
+        <div class="usernamePresentacionLeft"><h1>User</h1></div>
+      </div>
+  </div>
+
+  <div class="centralSide">
+    <div class="divCardCrearPubli">
+      <div class="imgDivCrearPubli">
+      <img src="https://b2472105.smushcdn.com/2472105/wp-content/uploads/2023/01/Perfil-Profesional-_63-819x1024.jpg?lossy=1&strip=1&webp=1" alt="">
+      </div>
+      <div class="ipDivCrearPubli">
+      <input type="text" placeholder="Haz una publicación">
+      </div>
+
+
+    </div>
+  </div>
+
+  <div class="rigthSide">
+
+  </div>
+</div>
+  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
