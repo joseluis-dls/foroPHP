@@ -33,7 +33,7 @@ if (!empty($_SESSION['active'])) {
                 if (mysqli_num_rows($result) > 0) {
                     $data = mysqli_fetch_array($result);
                     $hashed_password = mysqli_fetch_array($pswd_result);
-                    if ($hashed_password['password'] == $data["password"]) { 
+                    if ($hashed_password['password'] == $data["password"]) {
                         $_SESSION['active'] = true;
                         $_SESSION['user_id'] = $data['user_id'];
                         $_SESSION['email'] = $data['email'];
