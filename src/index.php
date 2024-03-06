@@ -25,15 +25,9 @@ if (!empty($_SESSION['active'])) {
                 mysqli_stmt_execute($query);
                 $result = mysqli_stmt_get_result($query);
 
-                $query_pswd = mysqli_prepare($connection, "SELECT password, deleted_at FROM users WHERE password = PASSWORD(?) AND deleted_at IS NULL;");
-                mysqli_stmt_bind_param($query_pswd, "s", $pass);
-                mysqli_stmt_execute($query_pswd);
-                $pswd_result = mysqli_stmt_get_result($query_pswd);
-
                 if (mysqli_num_rows($result) > 0) {
-                    $data = mysqli_fetch_array($result);
-                    $hashed_password = mysqli_fetch_array($pswd_result);
-                    if ($hashed_password['password'] == $data["password"]) {
+                    $data = mysqli_fetch_assoc($result);
+                    if (password_verify($pass, $data["password"])) {
                         $_SESSION['active'] = true;
                         $_SESSION['user_id'] = $data['user_id'];
                         $_SESSION['email'] = $data['email'];
@@ -58,28 +52,36 @@ if (!empty($_SESSION['active'])) {
             }
         } elseif (isset($_POST['registerForm'])) {
             // Validación y procesamiento del formulario
-            $name = mysqli_real_escape_string($connection, $_POST['name']);
-            $lastName = mysqli_real_escape_string($connection, $_POST['lastName']);
-            $username = mysqli_real_escape_string($connection, $_POST['username']);
-            $email = mysqli_real_escape_string($connection, $_POST['email']);
-            $password = mysqli_real_escape_string($connection, $_POST['password']);
-            $confirm_password = mysqli_real_escape_string($connection, $_POST['confirm_password']);
-
-            // Verificar si las contraseñas coinciden
-            if ($password != $confirm_password) {
-                $alert = "Las contraseñas no coinciden";
+            if (empty($_POST['username']) || empty($_POST['password']) || empty($_POST['lastName']) || empty($_POST['email'] || empty($_POST['$password'])) || empty($_POST['confirm_password'])) {
+                $alert = 'Fill all of the fields';
             } else {
-                // Continuar con la inserción en la base de datos
-                $query = "INSERT INTO users (rol_id, username, password, name, lastName, email) 
-                        VALUES (2, '$username', PASSWORD('$password'), '$name', '$lastName', '$email')";
-
-                if (mysqli_query($connection, $query)) {
-                    $alert = "Usuario registrado exitosamente";
-                    // Limpia los datos después de un registro exitoso
-                    $_POST = array();
+                $name = mysqli_real_escape_string($connection, $_POST['name']);
+                $lastName = mysqli_real_escape_string($connection, $_POST['lastName']);
+                $username = mysqli_real_escape_string($connection, $_POST['username']);
+                $email = mysqli_real_escape_string($connection, $_POST['email']);
+                $password = mysqli_real_escape_string($connection, $_POST['password']);
+                $confirm_password = mysqli_real_escape_string($connection, $_POST['confirm_password']);
+    
+    
+                // Verificar si las contraseñas coinciden
+                if ($password != $confirm_password) {
+                    $alert = "Las contraseñas no coinciden";
                 } else {
-                    $alert = "Error al registrar el usuario: " . mysqli_error($connection);
-                }
+                    $hashed_password = password_hash(mysqli_real_escape_string($connection, $_POST['password']), PASSWORD_DEFAULT);
+    
+                    // Continuar con la inserción en la base de datos
+                    $query = "INSERT INTO users (rol_id, username, password, name, lastName, email) 
+                            VALUES (2, '$username', '$hashed_password', '$name', '$lastName', '$email')";
+    
+                    if (mysqli_query($connection, $query)) {
+                        $alert = "Usuario registrado exitosamente";
+                        // Limpia los datos después de un registro exitoso
+                        $_POST = array();
+                    } else {
+                        $alert = "Error al registrar el usuario: " . mysqli_error($connection);
+                    }
+            }
+ 
             }
 
         }
