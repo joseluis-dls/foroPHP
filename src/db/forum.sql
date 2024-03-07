@@ -222,6 +222,7 @@ DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,
   `rol_id` int(11) NOT NULL,
+  `profile_photo` text DEFAULT NULL,
   `username` varchar(20) NOT NULL,
   `password` varchar(50) NOT NULL,
   `name` varchar(50) NOT NULL,
