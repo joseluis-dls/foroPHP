@@ -22,11 +22,11 @@ if (!empty($_SESSION['active'])) {
                 $data = mysqli_fetch_array($query);
                 print_r($data);
                 $_SESSION['active'] = true;
-                $_SESSION['id_user'] = $data['id_user']; //Los campos deben de llamarse igual que en la BD
+                $_SESSION['user_id'] = $data['user_id']; //Los campos deben de llamarse igual que en la BD
                 // $_SESSION['nombre'] = $data['nombre'];
                 $_SESSION['email'] = $data['email'];
                 $_SESSION['username'] = $data['username'];
-                $_SESSION['rol'] = $data['rol'];
+                $_SESSION['rol_id'] = $data['rol_id'];
 
                 if ($data['rol'] == 1) {
                     header('location: views/principalDashboardView.php');
@@ -55,7 +55,7 @@ if (!empty($_SESSION['active'])) {
             $alert = "Las contraseñas no coinciden";
         } else {
             // Continuar con la inserción en la base de datos
-            $query = "INSERT INTO users (rol, username, password, nombre, apellido, email) 
+            $query = "INSERT INTO users (rol_id, username, password, name, lastName, email) 
                       VALUES (1, '$username', '$password', '$name', '$lastname', '$email')";
 
             if (mysqli_query($connection, $query)) {
