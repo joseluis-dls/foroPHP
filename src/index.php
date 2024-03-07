@@ -28,7 +28,7 @@ if (!empty($_SESSION['active'])) {
                 $_SESSION['username'] = $data['username'];
                 $_SESSION['rol_id'] = $data['rol_id'];
 
-                if ($data['rol'] == 1) {
+                if ($data['rol_id'] == 1) {
                     header('location: views/principalDashboardView.php');
                 } else if ($data['rol'] == 2) {
                     header('location: main_rol2.php');
@@ -44,7 +44,7 @@ if (!empty($_SESSION['active'])) {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Validación y procesamiento del formulario
         $name = mysqli_real_escape_string($connection, $_POST['name']);
-        $lastname = mysqli_real_escape_string($connection, $_POST['lastname']);
+        $lastname = mysqli_real_escape_string($connection, $_POST['lastName']);
         $username = mysqli_real_escape_string($connection, $_POST['username']);
         $email = mysqli_real_escape_string($connection, $_POST['email']);
         $password = md5(mysqli_real_escape_string($connection, $_POST['password']));
@@ -95,7 +95,7 @@ if (!empty($_SESSION['active'])) {
     <div id="Login">
         <div class="presentationLoginDiv">
             <div class="centroTextoImagen">
-                <h1>UNESformun</h1>
+                <h1>UNESforum</h1>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores libero, voluptatem modi at quidem, velit vero ullam nulla dicta, repudiandae molestiae animi laudantium obcaecati aliquam possimus. Facilis numquam veniam veritatis.</p>
             </div>
         </div>
@@ -103,8 +103,8 @@ if (!empty($_SESSION['active'])) {
         <div id="loginFormContainer" class="formLoginDiv">
             <div class="textBienvenida">
                 <h3>Bienvenido a</h3>
-                <h1>UNESformun</h1>
-                <p>Haz login para poder acceder a nuestro contenido.</p>
+                <h1>UNESforum</h1>
+                <p>¡Inicia sesión!</p>
             </div>
 
             <form id="LoginForm" action="" method="post">
@@ -118,7 +118,7 @@ if (!empty($_SESSION['active'])) {
                 </div>
 
                 <div class="terminos">
-                    Don't have an account yet? <a href="#" id="registerLink">Click here to register</a>.
+                    ¿No tienes cuenta todavía? <a href="#" id="registerLink">Regístrate</a>.
                 </div>
             </form>
         </div>
@@ -126,24 +126,24 @@ if (!empty($_SESSION['active'])) {
         <div id="registerFormContainer" class="formLoginDiv">
             <div class="textBienvenida">
                 <h3>Bienvenido a</h3>
-                <h1>UNESformun</h1>
-                <p>Complete el formulario para registrarse.</p>
+                <h1>UNESforum</h1>
+                <p>Ingresa tus datos:</p>
             </div>
 
             <form id="RegisterForm" action="" method="post">
-                <input type="text" name="name" placeholder="Enter your first name" value="<?php echo isset($_POST['name']) ? htmlspecialchars($_POST['name']) : ''; ?>">
+                <input type="text" name="name" placeholder="Name" value="<?php echo isset($_POST['name']) ? htmlspecialchars($_POST['name']) : ''; ?>">
 
-                <input type="text" name="lastname" placeholder="Enter your last name" value="<?php echo isset($_POST['lastname']) ? htmlspecialchars($_POST['lastname']) : ''; ?>">
+                <input type="text" name="lastname" placeholder="Last Name" value="<?php echo isset($_POST['lastname']) ? htmlspecialchars($_POST['lastname']) : ''; ?>">
 
-                <input type="email" name="email" placeholder="Enter your email" value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>">
+                <input type="email" name="email" placeholder="Email" value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>">
 
 
                 <input type="text" name="username" placeholder="Username" value="<?php echo isset($_POST['username']) ? htmlspecialchars($_POST['username']) : ''; ?>">
                 <input type="password" name="password" placeholder="Password">
 
-                <input type="password" name="confirm_password" placeholder="Repeat Password">
+                <input type="password" name="confirm_password" placeholder="Confirm Password">
                 <div class="terminos_login">
-                    You have an account, <a href="#" id="loginLink">log in</a>.
+                    ¿Ya tienes cuenta? <a href="#" id="loginLink">Inicia sesión</a>.
                 </div>
                 <div class="button_register">
                     <button id="Success" type="submit">Register</button>
