@@ -1,22 +1,34 @@
 <?php
-$alert = '';
 session_start();
+require_once "connection.php"; // generalizar el acceso a la conexión
+
 
 if (!empty($_SESSION['active'])) {
     header('location: views/principalDashboardView.php');
+    exit();  // Salir para evitar que se siga ejecutando el script después de redirigir
 } else {
+    $alert = '';
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if (isset($_POST['loginForm'])) {
+            // Procesar el formulario de inicio de sesión
+            if (empty($_POST['username']) || empty($_POST['password'])) {
+                $alert = 'Insert your user and password';
+            } else {
 
-    if (!empty($_POST)) {
-        if (empty($_POST['username']) || empty($_POST['password'])) {
-            $alert = 'Insert your user and password';
-        } else {
-            require_once "connection.php";
-            // Se añade la función de cifrado md5 para la contraseña
-            $user = mysqli_real_escape_string($connection, $_POST['username']);
-            $pass = md5(mysqli_real_escape_string($connection, $_POST['password']));
+                // Se actualiza el cifrado a bcrypt
+                $user = mysqli_real_escape_string($connection, $_POST['username']);
+                $pass = mysqli_real_escape_string($connection, $_POST['password']);
 
-            $query = mysqli_query($connection, "SELECT * FROM users WHERE username = '$user' AND password = '$pass';");
-            $result = mysqli_num_rows($query);
+                // Consulta preparada para prevenir inyección SQL 
+                $query = mysqli_prepare($connection, "SELECT * FROM users WHERE username = ? AND deleted_at IS NULL;");
+                mysqli_stmt_bind_param($query, "s", $user);
+                mysqli_stmt_execute($query);
+                $result = mysqli_stmt_get_result($query);
+
+                $query_pswd = mysqli_prepare($connection, "SELECT password, deleted_at FROM users WHERE password = PASSWORD(?) AND deleted_at IS NULL;");
+                mysqli_stmt_bind_param($query_pswd, "s", $pass);
+                mysqli_stmt_execute($query_pswd);
+                $pswd_result = mysqli_stmt_get_result($query_pswd);
 
             if ($result > 0) {
                 $data = mysqli_fetch_array($query);
@@ -58,15 +70,19 @@ if (!empty($_SESSION['active'])) {
             $query = "INSERT INTO users (rol_id, username, password, name, lastName, email) 
                       VALUES (1, '$username', '$password', '$name', '$lastname', '$email')";
 
-            if (mysqli_query($connection, $query)) {
-                $alert = "Usuario registrado exitosamente";
-                // Limpia los datos después de un registro exitoso
-                $_POST = array();
-            } else {
-                $alert = "Error al registrar el usuario: " . mysqli_error($connection);
+                if (mysqli_query($connection, $query)) {
+                    $alert = "Usuario registrado exitosamente";
+                    // Limpia los datos después de un registro exitoso
+                    $_POST = array();
+                } else {
+                    $alert = "Error al registrar el usuario: " . mysqli_error($connection);
+                }
             }
+
         }
     }
+
+
 }
 
 ?>
@@ -108,13 +124,15 @@ if (!empty($_SESSION['active'])) {
             </div>
 
             <form id="LoginForm" action="" method="post">
-                <div class="alert"><?php echo isset($alert) ? $alert : ''; ?></div>
+                <div class="alert">
+                    <?php echo isset($alert) ? $alert : ''; ?>
+                </div>
                 <input type="text" name="username" placeholder="Username">
 
                 <input type="password" name="password" placeholder="Password">
 
                 <div class="buttons">
-                    <button id="Succes" type="submit">Log in</button>
+                    <button id="Succes" type="submit" name="loginForm">Log in</button>
                 </div>
 
                 <div class="terminos">
@@ -138,7 +156,8 @@ if (!empty($_SESSION['active'])) {
                 <input type="email" name="email" placeholder="Email" value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>">
 
 
-                <input type="text" name="username" placeholder="Username" value="<?php echo isset($_POST['username']) ? htmlspecialchars($_POST['username']) : ''; ?>">
+                <input type="text" name="username" placeholder="Username"
+                    value="<?php echo isset($_POST['username']) ? htmlspecialchars($_POST['username']) : ''; ?>">
                 <input type="password" name="password" placeholder="Password">
 
                 <input type="password" name="confirm_password" placeholder="Confirm Password">
@@ -146,20 +165,21 @@ if (!empty($_SESSION['active'])) {
                     ¿Ya tienes cuenta? <a href="#" id="loginLink">Inicia sesión</a>.
                 </div>
                 <div class="button_register">
-                    <button id="Success" type="submit">Register</button>
+                    <button id="Success" type="submit" name="registerForm">Register</button>
                 </div>
 
                 <!-- Mostrar alerta -->
-                <?php if (!empty($alert)) : ?>
-                    <div class="alert"><?php echo $alert; ?></div>
+                <?php if (!empty($alert)): ?>
+                    <div class="alert">
+                        <?php echo $alert; ?>
+                    </div>
                 <?php endif; ?>
             </form>
         </div>
     </div>
 
-    <script src="app.js"></script>
     <script>
-        document.getElementById('registerLink').addEventListener('click', function(e) {
+        document.getElementById('registerLink').addEventListener('click', function (e) {
             e.preventDefault(); // Evita que el enlace redireccione a otra página
 
             // Oculta el formulario de inicio de sesión y muestra el formulario de registro
@@ -167,7 +187,7 @@ if (!empty($_SESSION['active'])) {
             document.getElementById('registerFormContainer').style.display = 'block';
         });
 
-        document.getElementById("loginLink").addEventListener("click", function(e){
+        document.getElementById("loginLink").addEventListener("click", function (e) {
             document.getElementById('loginFormContainer').style.display = 'block';
             document.getElementById('registerFormContainer').style.display = 'none';
         })
