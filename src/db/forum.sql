@@ -57,6 +57,7 @@ CREATE TABLE `posts` (
   `post_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `post_content` text NOT NULL,
+  `post_photo` text DEFAULT NULL,
   `posted_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `deleted_at` timestamp NULL DEFAULT NULL,
