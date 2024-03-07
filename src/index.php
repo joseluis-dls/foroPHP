@@ -52,7 +52,7 @@ if (!empty($_SESSION['active'])) {
             }
         } elseif (isset($_POST['registerForm'])) {
             // Validación y procesamiento del formulario
-            if (empty($_POST['username']) || empty($_POST['password']) || empty($_POST['lastName']) || empty($_POST['email'] || empty($_POST['$password'])) || empty($_POST['confirm_password'])) {
+            if (empty($_POST['name']) || empty($_POST['lastName']) || empty($_POST['email']) || empty($_POST['username'] || empty($_POST['password'])) || empty($_POST['confirm_password'])) {
                 $alert = 'Fill all of the fields';
             } else {
                 $name = mysqli_real_escape_string($connection, $_POST['name']);
@@ -156,7 +156,7 @@ if (!empty($_SESSION['active'])) {
             <form id="RegisterForm" action="" method="post">
                 <input type="text" name="name" placeholder="Name" value="<?php echo isset($_POST['name']) ? htmlspecialchars($_POST['name']) : ''; ?>">
 
-                <input type="text" name="lastname" placeholder="Last Name" value="<?php echo isset($_POST['lastname']) ? htmlspecialchars($_POST['lastname']) : ''; ?>">
+                <input type="text" name="lastName" placeholder="Last Name" value="<?php echo isset($_POST['lastName']) ? htmlspecialchars($_POST['lastName']) : ''; ?>">
 
                 <input type="email" name="email" placeholder="Email" value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>">
 
