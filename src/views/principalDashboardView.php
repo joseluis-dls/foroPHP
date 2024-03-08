@@ -97,47 +97,64 @@
 
     </div>
 
+    <dialog class="dialogCrearPubli" id="favDialog">
+      <form method="dialog">
+        <section>
+          <div class="cerrarDialog">
+            <div class="h1crearPuDiv">
+              <h1>Crea una publicación</h1>
+            </div>
 
-    <div id="modal_publis" class="modalCrearPublicacion">
-      <div class="modalContentForm">
-        <div class="closeAndTitle">
-          <div class="titleModal">Crear Publicación</div>
-          <div class="closeModal">X</div>
-        </div>
-
-        <div class="modalUserInfo">
-          <div class="imagenUserModal"><img src="" alt=""></div>
-          <div class="infoNameModal">
-            <h1>Joseph Joestar</h1>
+            <button id="cancel" type="reset">X</button>
           </div>
-        </div>
 
-        <textarea name="" id="" cols="30" rows="10"></textarea>
+          <div class="datosUserPublicacion">
+            <div class="imagenUserPubliNueva"><img src="https://b2472105.smushcdn.com/2472105/wp-content/uploads/2023/01/Perfil-Profesional-_63-819x1024.jpg?lossy=1&strip=1&webp=1" alt=""></div>
+            <div class="usernameName">
+              <h3>Joseph Joestar</h3>
+            </div>
+
+          </div>
 
 
-        <div class="sectionImagenesModal">
-          <div class="btnAddImagen"></div>
-          <div class="previsualizacionImagen"></div>
-        </div>
+          <div class="textPublicacion">
+            <textarea placeholder="¿Que estas pensando?" name="" id="" cols="30" rows="10"></textarea>
+          </div>
+
+          <div class="imagesPubli">
+            <div class="addFotoPublicacion">+</div>
+            <div class="imagesPubliCargadas"><img src="https://cnnespanol.cnn.com/wp-content/uploads/2022/09/GettyImages-1235399686.jpg?quality=100&strip=info" alt=""></div>
+          </div>
+
+          <div class="btn_publicar">
+            <button>Publicar</button>
+          </div>
+        </section>
+      </form>
+    </dialog>
 
 
-        <div class="publicarBotonModal">
-          <button>Publicar</button>
-        </div>
-
-      </div>
-    </div>
   </div>
+  </div>
+
   <script>
-    const form = document.getElementById("create-publi_form")
+    (function() {
+      var publiButton = document.getElementById("create-publi_form");
+      var cancelButton = document.getElementById("cancel");
+      var favDialog = document.getElementById("favDialog");
 
-    form.addEventListener("click", (e) => {
-      e.preventDefault();
+      // Update button opens a modal dialog
+      publiButton.addEventListener("click", function() {
+        favDialog.showModal();
+        document.body.classList.add("bloquear-scroll");
+      });
 
-      document.getElementById("modal_publis").style.display = 'block';
-
-      console.log("Hola")
-    })
+      // Form cancel button closes the dialog box
+      cancelButton.addEventListener("click", function() {
+        favDialog.close();
+        document.body.classList.remove("bloquear-scroll");
+      });
+    })();
   </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
