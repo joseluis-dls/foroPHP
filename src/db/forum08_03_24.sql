@@ -113,6 +113,7 @@ CREATE TABLE `roles` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+INSERT INTO roles (rol_name) VALUES('admin'),('user');
 --
 -- Table structure for table `tags`
 --
