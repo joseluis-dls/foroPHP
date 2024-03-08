@@ -11,7 +11,7 @@
     height: 100px;
     margin-left: 10%;
     background-color: #F9F9F9; 
-    box-shadow: -20px 40px 40px 10px rgba(0, 0, 0, 0.3); /* Sombra */
+    box-shadow: -8px 6px 20px 5px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     z-index: 1;
     display: flex;
@@ -74,7 +74,6 @@
 .centralSide{
     margin-left: 25%; /* Ancho de leftSide y rightSide */
     margin-right: 25%;
-    box-shadow: -20px 40px 40px 10px rgba(0, 0, 0, 0.3); /* Sombra */
     width: 50%;
     min-height: 685px;
     height: auto;
