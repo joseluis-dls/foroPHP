@@ -55,7 +55,7 @@ if (!empty($_SESSION['active'])) {
             $alert = "Las contraseñas no coinciden";
         } else {
             // Continuar con la inserción en la base de datos
-            $query = "INSERT INTO users (rol, username, password, nombre, apellido, email) 
+            $query = "INSERT INTO users (rol_id, username, password, name, lastName, email) 
                       VALUES (1, '$username', '$password', '$name', '$lastname', '$email')";
 
             if (mysqli_query($connection, $query)) {
@@ -167,7 +167,7 @@ if (!empty($_SESSION['active'])) {
             document.getElementById('registerFormContainer').style.display = 'block';
         });
 
-        document.getElementById("loginLink").addEventListener("click", function(e){
+        document.getElementById("loginLink").addEventListener("click", function(e) {
             document.getElementById('loginFormContainer').style.display = 'block';
             document.getElementById('registerFormContainer').style.display = 'none';
         })
