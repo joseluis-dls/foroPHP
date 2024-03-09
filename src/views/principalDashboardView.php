@@ -47,7 +47,7 @@
   <div class="leftSide">
       <div class="divLeftSidePresentation">
         <div class="imgPresntacionLeft"><img src="https://b2472105.smushcdn.com/2472105/wp-content/uploads/2023/01/Perfil-Profesional-_63-819x1024.jpg?lossy=1&strip=1&webp=1" alt=""></div>
-        <div class="usernamePresentacionLeft"><h1><?php echo $_SESSION['user_id']; ?>  User</h1></div>
+        <div class="usernamePresentacionLeft"><h1><?php echo $_SESSION["username"]?></h1></div>
       </div>
   </div>
 
@@ -63,29 +63,8 @@
 
     </div>
 
-    <div class="publisSection">
-      <div class="publiCard">
-        <div class="datosPubli">
-          <div class="fotoDatosPubli"><img src="https://b2472105.smushcdn.com/2472105/wp-content/uploads/2023/01/Perfil-Profesional-_63-819x1024.jpg?lossy=1&strip=1&webp=1" alt=""></div>
-          <div class="datosDatosPubli">
-            <h1>Janice Griffith</h1>
-            <p>Published: June,2 2018 19:PM</p>
-          </div>
-          </div>
-          <div class="descriptionPublicacion">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis omnis beatae, ipsum sunt aliquam quasi magni ullam tenetur officia consequuntur. Odit officiis ex a ipsam ab esse nihil quia voluptates.</p>
-          </div>
-          <div class="fotoPubliPrincipal">
-            <img class="imagenPublicacionPrincipal" src="https://webunwto.s3.eu-west-1.amazonaws.com/2021-01/un-general-assembly.jpg?VersionId=WCBuWMPVkL.WYPHiNRQP2lHM3.AhwcKv" alt="">
-          </div>
-
-          <div class="reaccionesPubliBar">
-              <li><img src="../img/reaction-icons/001-como.png" alt="">10</li>
-              <li><img src="../img/reaction-icons/002-no-me-gusta.png" alt="">550</li>
-              <li><img src="../img/reaction-icons/003-comentario-positivo.png" alt="">100</li>
-            </ul>
-        </div>
-      </div>
+    <div class="publisSection" id="publisSection">
+      <!-- Posts -->
     </div>
   </div>
 
@@ -158,6 +137,53 @@
 
 <script>
 $(document).ready(function () {
+  getPosts()
+
+  function getPosts() {
+    $.ajax({
+      type: "get",
+      url: "../php/getPosts.php",
+      success: function (response) {
+        let posts = JSON.parse(response);
+        let template = ''
+
+        if (posts.length > 0) {
+          // Itera sobre los posts obtenidos para mostrarlos en pantalla
+          posts.forEach( post => {
+            template += `
+                <div class="publiCard">
+                  <div class="datosPubli">
+                    <div class="fotoDatosPubli"><img src="https://b2472105.smushcdn.com/2472105/wp-content/uploads/2023/01/Perfil-Profesional-_63-819x1024.jpg?lossy=1&strip=1&webp=1" alt=""></div>
+                    <div class="datosDatosPubli">
+                      <h1>${post.username}</h1>
+                      <p>Published: ${post.posted_at}</p>
+                    </div>
+                    </div>
+                    <div class="descriptionPublicacion">
+                      <p>${post.post_content}</p>
+                    </div>
+                    <div class="fotoPubliPrincipal">
+                      <img class="imagenPublicacionPrincipal" src="https://webunwto.s3.eu-west-1.amazonaws.com/2021-01/un-general-assembly.jpg?VersionId=WCBuWMPVkL.WYPHiNRQP2lHM3.AhwcKv" alt="">
+                    </div>
+
+                    <div class="reaccionesPubliBar">
+                        <li><img src="../img/reaction-icons/001-como.png" alt="">10</li>
+                        <li><img src="../img/reaction-icons/002-no-me-gusta.png" alt="">550</li>
+                        <li><img src="../img/reaction-icons/003-comentario-positivo.png" alt="">100</li>
+                      </ul>
+                  </div>
+                </div>
+            `
+          })
+
+          $("#publisSection").html(template);
+        }
+      },
+      error: error => {
+        console.error(error)
+      }
+    });
+  }
 
   $("#btnCreatePost").click(function (e) { 
     e.preventDefault();
