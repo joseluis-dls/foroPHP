@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,7 +47,7 @@
   <div class="leftSide">
       <div class="divLeftSidePresentation">
         <div class="imgPresntacionLeft"><img src="https://b2472105.smushcdn.com/2472105/wp-content/uploads/2023/01/Perfil-Profesional-_63-819x1024.jpg?lossy=1&strip=1&webp=1" alt=""></div>
-        <div class="usernamePresentacionLeft"><h1>User</h1></div>
+        <div class="usernamePresentacionLeft"><h1><?php echo $_SESSION['user_id']; ?>  User</h1></div>
       </div>
   </div>
 
@@ -93,7 +94,7 @@
   </div>
 
   <dialog class="dialogCrearPubli" id="favDialog">
-    <form method="dialog">
+    <form method="post" action="" id="createPost">
     <section>
       <div class="cerrarDialog">
         <div class="h1crearPuDiv">
@@ -113,7 +114,7 @@
 
         
         <div class="textPublicacion">
-            <textarea placeholder="¿Que estas pensando?" name="" id="" cols="30" rows="10"></textarea>
+            <textarea placeholder="¿Que estas pensando?" name="post_content" id="postText" cols="30" rows="10"></textarea>
           </div>
 
           <div class="imagesPubli">
@@ -122,7 +123,7 @@
           </div>
 
           <div class="btn_publicar">
-            <button>Publicar</button>
+            <button id="btnCreatePost">Publicar</button>
           </div>
     </section>
     </form>
@@ -132,6 +133,7 @@
   </div>
 </div>
 
+<script src="../js/jquery.js"></script>
   <script>
       (function () {
     var publiButton = document.getElementById("create-publi_form");
@@ -150,7 +152,36 @@
       document.body.classList.remove("bloquear-scroll");
     });
   })();
+  
   </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+<script>
+$(document).ready(function () {
+
+  $("#btnCreatePost").click(function (e) { 
+    e.preventDefault();
+    let formData = new FormData($("#createPost")[0]);
+
+    $.ajax({
+      type: "post",
+      url: "../php/uploadPost.php",
+      data: formData,
+      processData: false,
+      contentType: false,
+      success: function (response) {
+        console.log(response)
+      },
+      error: function (error) {
+        console.error(error)
+      }
+    });
+
+    
+  });
+  
+});
+  
+</script>
 </body>
 </html>

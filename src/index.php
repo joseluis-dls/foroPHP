@@ -1,5 +1,4 @@
-<?php
-session_start();
+<?php session_start();
 require_once "connection.php"; // generalizar el acceso a la conexión
 
 
