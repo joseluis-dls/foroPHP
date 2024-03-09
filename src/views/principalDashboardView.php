@@ -37,7 +37,7 @@
 </svg></a>
         </li>
         <li class="nav-item me-3 li-Navbar_animacion">
-          <a class="nav-link" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+          <a class="nav-link" href="adminDashboard.php"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
   <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
 </svg></a>
         </li>
@@ -59,8 +59,21 @@
       </div>
     </div>
 
-    <div class="publisSection" id="publisSection">
-      <!-- Posts -->
+    <div class="centralSide">
+      <div id="create-publi_form" class="divCardCrearPubli">
+        <div class="imgDivCrearPubli">
+          <img class="centralSideImageImage" src="https://b2472105.smushcdn.com/2472105/wp-content/uploads/2023/01/Perfil-Profesional-_63-819x1024.jpg?lossy=1&strip=1&webp=1" alt="">
+        </div>
+        <div class="ipDivCrearPubli">
+          <input type="text" placeholder="Haz una publicación" >
+        </div>
+
+
+      </div>
+
+      <div class="publisSection" id="publisSection">
+        <!-- Posts -->
+      </div>
     </div>
 
     <div class="rigthSide">
@@ -68,7 +81,7 @@
     </div>
 
     <dialog class="dialogCrearPubli" id="favDialog">
-      <form method="dialog">
+      <form method="post" id="createPost">
         <section>
           <div class="cerrarDialog">
             <div class="h1crearPuDiv">
@@ -86,7 +99,7 @@
 
         
         <div class="textPublicacion">
-            <textarea placeholder="¿Que estas pensando?" name="post_content" id="postText" cols="30" rows="10"></textarea>
+            <textarea placeholder="¿Que estas pensando?" name="post_content" id="post_content" cols="10" rows="10"></textarea>
           </div>
 
           <div class="imagesPubli">
