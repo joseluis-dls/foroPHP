@@ -94,7 +94,7 @@
           <div class="datosUserPublicacion">
             <div class="imagenUserPubliNueva"><img src="https://b2472105.smushcdn.com/2472105/wp-content/uploads/2023/01/Perfil-Profesional-_63-819x1024.jpg?lossy=1&strip=1&webp=1" alt=""></div>
             <div class="usernameName">
-              <h3>Joseph Joestar</h3>
+              <h3><?php echo $_SESSION['username']?></h3>
             </div>
 
         
@@ -103,8 +103,8 @@
           </div>
 
           <div class="imagesPubli">
-            <div class="addFotoPublicacion">+</div>
-            <div class="imagesPubliCargadas"><img src="https://cnnespanol.cnn.com/wp-content/uploads/2022/09/GettyImages-1235399686.jpg?quality=100&strip=info" alt=""></div>
+              <input type="file" name="post_picture" id="post_picture">
+              <div class="imagesPubliCargadas"><img src="https://cnnespanol.cnn.com/wp-content/uploads/2022/09/GettyImages-1235399686.jpg?quality=100&strip=info" alt=""></div>
           </div>
 
           <div class="btn_publicar">
@@ -143,13 +143,12 @@
 
 <script>
 $(document).ready(function () {
-  getPosts()
 
-  function getPosts() {
+  async function getPosts() {
     $.ajax({
       type: "get",
       url: "../php/getPosts.php",
-      success: function (response) {
+      success: await function (response) {
         let posts = JSON.parse(response);
         let template = ''
 
@@ -169,7 +168,7 @@ $(document).ready(function () {
                       <p>${post.post_content}</p>
                     </div>
                     <div class="fotoPubliPrincipal">
-                      <img class="imagenPublicacionPrincipal" src="https://webunwto.s3.eu-west-1.amazonaws.com/2021-01/un-general-assembly.jpg?VersionId=WCBuWMPVkL.WYPHiNRQP2lHM3.AhwcKv" alt="">
+                      <img class="imagenPublicacionPrincipal" src="${post.post_picture}" alt="">
                     </div>
 
                     <div class="reaccionesPubliBar">
@@ -190,6 +189,7 @@ $(document).ready(function () {
       }
     });
   }
+  getPosts();
 
   $("#btnCreatePost").click(function (e) { 
     e.preventDefault();
@@ -209,9 +209,13 @@ $(document).ready(function () {
       }
     });
 
+    getPosts()
+
     
   });
-  
+
+  getPosts();
+
 });
   
 </script>

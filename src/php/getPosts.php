@@ -3,7 +3,7 @@
 require_once "../connection.php";
 
 // Consulta para obtener los posts desde la base de datos
-$query = "SELECT p.post_id, p.post_content, p.posted_at, u.username
+$query = "SELECT p.post_id, p.post_content, p.post_picture, p.posted_at, u.username
             FROM posts p
             INNER JOIN users u ON p.user_id = u.user_id
             ORDER BY p.posted_at DESC;";
@@ -18,6 +18,7 @@ if ($result) {
         $post = array(
             'post_id' => $row['post_id'],
             'post_content' => $row['post_content'],
+            'post_picture' => $row['post_picture'],
             'posted_at' => $row['posted_at'],
             'username' => $row['username']
         );
