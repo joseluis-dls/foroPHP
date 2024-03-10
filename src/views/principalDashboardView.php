@@ -16,7 +16,7 @@
   <div class="container-fluid">
     <!-- Columna izquierda: logo o título -->
     <div class="col-md-4">
-      <a class="navbar-brand" href="#">UNESforum</a>
+      <img src="../img/logo.png" class="navbar-brand me-3" style="width: 23%;" href="#"></img>
     </div>
 
       <!-- Columna central: buscador -->
@@ -58,6 +58,26 @@
           <h1>User</h1>
         </div>
       </div>
+
+      <div class="filtrosPublis">
+        <div class="filtrosNameH1">
+        <h1>F I L T R O S</h1>
+        <div class="underlineH1"></div>
+        </div>
+
+        <div class="filtroBotones">
+          <div class="odsLogo">
+            <img src="../img/ODS_1.jpg" alt="">
+          </div>
+          <div class="odsLogo">
+            <img src="../img/ODS_2.jpg" alt="">
+          </div>
+          <div class="odsLogo">
+            <img src="../img/ODS_3.png" alt="">
+          </div>
+        </div>
+
+      </div>
     </div>
 
     <div class="centralSide">
@@ -95,13 +115,153 @@
             <li><img src="../img/reaction-icons/003-comentario-positivo.png" alt="">100</li>
             </ul>
           </div>
+
+          <div class="commentsDiv">
+            <div class="comentariosDiv">
+              <div class="comment">
+                <div class="fotoComment"><img src="https://i.scdn.co/image/ab67616d0000b2735b1cca15efd967f87b1f4d4e" alt=""></div>
+                <div class="textComent">
+                  <h2>Jose Torres</h2>
+                  <p>Perfume de duchi, pantalon versacce.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mostrarMasComentarios">
+              <h3>Mostrar mas comentarios</h3>
+            </div>
+            <div class="comentarDiv">
+              <div class="comentarInputDiv">
+                <input type="text" placeholder="Escribe un comentario...">
+                <button>                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
+  <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576zm6.787-8.201L1.591 6.602l4.339 2.76z"/>
+</svg></button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="publiCard">
+          <div class="datosPubli">
+            <div class="fotoDatosPubli"><img src="https://b2472105.smushcdn.com/2472105/wp-content/uploads/2023/01/Perfil-Profesional-_63-819x1024.jpg?lossy=1&strip=1&webp=1" alt=""></div>
+            <div class="datosDatosPubli">
+              <h1>Janice Griffith</h1>
+              <p>Published: June,2 2018 19:PM</p>
+            </div>
+          </div>
+          <div class="descriptionPublicacion">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis omnis beatae, ipsum sunt aliquam quasi magni ullam tenetur officia consequuntur. Odit officiis ex a ipsam ab esse nihil quia voluptates.</p>
+            <a href="./adminDashboard.php">admin</a>
+          </div>
+          <div class="fotoPubliPrincipal">
+            <img class="imagenPublicacionPrincipal" src="https://webunwto.s3.eu-west-1.amazonaws.com/2021-01/un-general-assembly.jpg?VersionId=WCBuWMPVkL.WYPHiNRQP2lHM3.AhwcKv" alt="">
+          </div>
+
+          <div class="reaccionesPubliBar">
+            <li><img src="../img/reaction-icons/001-como.png" alt="">10</li>
+            <li><img src="../img/reaction-icons/002-no-me-gusta.png" alt="">550</li>
+            <li><img src="../img/reaction-icons/003-comentario-positivo.png" alt="">100</li>
+            </ul>
+          </div>
+
+          <div class="commentsDiv">
+            <div class="comentariosDiv">
+              <div class="comment">
+                <div class="fotoComment"><img src="https://i.scdn.co/image/ab67616d0000b2735b1cca15efd967f87b1f4d4e" alt=""></div>
+                <div class="textComent">
+                  <h2>Jose Torres</h2>
+                  <p>Perfume de duchi, pantalon versacce.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mostrarMasComentarios">
+              <h3>Mostrar mas comentarios</h3>
+            </div>
+            <div class="comentarDiv">
+              <div class="comentarInputDiv">
+                <input type="text" placeholder="Escribe un comentario...">
+                <button>                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
+  <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576zm6.787-8.201L1.591 6.602l4.339 2.76z"/>
+</svg></button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-
+    
     <div class="rigthSide">
+    <div class="statsProfile">
+        <h3>P E R F I L</h3>
+        <div class="linePerfilProfile"></div>
+        <div class="infoPerfilCard">
+            <div class="imgInfoCardProfile"><img src="https://i.scdn.co/image/ab67616d0000b2735b1cca15efd967f87b1f4d4e" alt=""></div>
+            <div class="textInfoCardProfile">
+                <h2>Jose Torres</h2>
+                <ul>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-postcard-heart" viewBox="0 0 16 16">
+                            <path
+                                d="M8 4.5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0zm3.5.878c1.482-1.42 4.795 1.392 0 4.622-4.795-3.23-1.482-6.043 0-4.622M2.5 5a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1z" />
+                            <path fill-rule="evenodd"
+                                d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1z" />
+                        </svg>
+                        <span id="likesCount">13 Me gusta</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="btnsCardInfoPerfil">
+            <button onclick="showLikes()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white"
+                    class="bi bi-chat-square-heart" viewBox="0 0 16 16">
+                    <path
+                        d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-2.5a2 2 0 0 0-1.6.8L8 14.333 6.1 11.8a2 2 0 0 0-1.6-.8H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5a1 1 0 0 1 .8.4l1.9 2.533a1 1 0 0 0 1.6 0l1.9-2.533a1 1 0 0 1 .8-.4H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
+                    <path
+                        d="M8 3.993c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132" />
+                </svg>
+            </button>
+            <button onclick="showComments()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white"
+                    class="bi bi-chat-left-text" viewBox="0 0 16 16">
+                    <path
+                        d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
+                    <path
+                        d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5M3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6m0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5" />
+                </svg>
+            </button>
+        </div>
+        <div class="ipStatsProfile" id="likes" style="display: none;">
+            <h2>Tus publicaciones suman</h2>
+            <p>    <span class="iconCorazon"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+            <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"/>
+            </svg></span>13</p> 
+
+            <h3>2 likes nuevos esta semana</h3>
+        </div>
+
+        <div class="ipStatsProfile" id="comments" style="display: none;">
+            <h2>Tus publicaciones suman</h2>
+          <p style="color:rgb(47, 19, 103); "class="commentP"><span style="padding-right:3%;"><svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" fill="rgb(47, 19, 103)" class="bi bi-chat-right-dots-fill" viewBox="0 0 16 16">
+  <path d="M16 2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h9.586a1 1 0 0 1 .707.293l2.853 2.853a.5.5 0 0 0 .854-.353zM5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m3 1a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/>
+</svg></span>20</p> 
+
+          <h3>10 comentarios nuevos esta semana</h3>
+        </div>
+      </div>
+
+
+
+</div>
+
+
 
     </div>
+    
+
+
 
     <dialog class="dialogCrearPubli" id="favDialog">
       <form method="dialog">
@@ -133,7 +293,7 @@
           </div>
 
           <div class="btn_publicar">
-            <button>Publicar</button>
+            <button id="btn_publicar">Publicar</button>
           </div>
         </section>
       </form>
@@ -141,6 +301,7 @@
 
 
   </div>
+
   </div>
 
   <script>
@@ -148,19 +309,44 @@
       var publiButton = document.getElementById("create-publi_form");
       var cancelButton = document.getElementById("cancel");
       var favDialog = document.getElementById("favDialog");
+      var btn_publicar = document.getElementById("btn_publicar");
 
-      // Update button opens a modal dialog
       publiButton.addEventListener("click", function() {
         favDialog.showModal();
         document.body.classList.add("bloquear-scroll");
       });
 
-      // Form cancel button closes the dialog box
       cancelButton.addEventListener("click", function() {
         favDialog.close();
         document.body.classList.remove("bloquear-scroll");
       });
+
+      btn_publicar.addEventListener("click", ()=> {
+        document.body.classList.remove("bloquear-scroll");
+      })
+
+      document.addEventListener("keydown", function(event) {
+        if (event.key === "Escape") {
+          document.body.classList.remove("bloquear-scroll");
+        }
+      });
     })();
+
+    function showLikes() {
+    var likesDiv = document.getElementById("likes");
+    var commentsDiv = document.getElementById("comments");
+
+    likesDiv.style.display = "block";
+    commentsDiv.style.display = "none";
+}
+
+function showComments() {
+    var likesDiv = document.getElementById("likes");
+    var commentsDiv = document.getElementById("comments");
+
+    likesDiv.style.display = "none";
+    commentsDiv.style.display = "block";
+}
   </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
