@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $full_dir = __DIR__ . "/../img/posts/" . $picture_name;
 
     // Ajusta la ruta relativa para mostrarla en la página
-    $dir = "/maquetacion_foro/src/img/posts/" . $picture_name;
+    $dir = "/foroPHP/src/img/posts/" . $picture_name;
 
     // Mueve la imagen al directorio de destino
     move_uploaded_file($_FILES["post_picture"]["tmp_name"], $full_dir);
