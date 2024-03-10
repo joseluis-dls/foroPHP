@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,7 +37,7 @@
 </svg></a>
         </li>
         <li class="nav-item me-3 li-Navbar_animacion">
-          <a class="nav-link" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+          <a class="nav-link" href="adminDashboard.php"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
   <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
 </svg></a>
         </li>
@@ -54,9 +55,7 @@
     <div class="leftSide">
       <div class="divLeftSidePresentation">
         <div class="imgPresntacionLeft"><img src="https://b2472105.smushcdn.com/2472105/wp-content/uploads/2023/01/Perfil-Profesional-_63-819x1024.jpg?lossy=1&strip=1&webp=1" alt=""></div>
-        <div class="usernamePresentacionLeft">
-          <h1>User</h1>
-        </div>
+        <div class="usernamePresentacionLeft"><h1><?php echo $_SESSION["username"]?></h1></div>
       </div>
 
       <div class="filtrosPublis">
@@ -86,108 +85,14 @@
           <img class="centralSideImageImage" src="https://b2472105.smushcdn.com/2472105/wp-content/uploads/2023/01/Perfil-Profesional-_63-819x1024.jpg?lossy=1&strip=1&webp=1" alt="">
         </div>
         <div class="ipDivCrearPubli">
-          <input type="text" placeholder="Haz una publicación">
+          <input type="text" placeholder="Haz una publicación" >
         </div>
 
 
       </div>
 
-      <div class="publisSection">
-        <div class="publiCard">
-          <div class="datosPubli">
-            <div class="fotoDatosPubli"><img src="https://b2472105.smushcdn.com/2472105/wp-content/uploads/2023/01/Perfil-Profesional-_63-819x1024.jpg?lossy=1&strip=1&webp=1" alt=""></div>
-            <div class="datosDatosPubli">
-              <h1>Janice Griffith</h1>
-              <p>Published: June,2 2018 19:PM</p>
-            </div>
-          </div>
-          <div class="descriptionPublicacion">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis omnis beatae, ipsum sunt aliquam quasi magni ullam tenetur officia consequuntur. Odit officiis ex a ipsam ab esse nihil quia voluptates.</p>
-            <a href="./adminDashboard.php">admin</a>
-          </div>
-          <div class="fotoPubliPrincipal">
-            <img class="imagenPublicacionPrincipal" src="https://webunwto.s3.eu-west-1.amazonaws.com/2021-01/un-general-assembly.jpg?VersionId=WCBuWMPVkL.WYPHiNRQP2lHM3.AhwcKv" alt="">
-          </div>
-
-          <div class="reaccionesPubliBar">
-            <li><img src="../img/reaction-icons/001-como.png" alt="">10</li>
-            <li><img src="../img/reaction-icons/002-no-me-gusta.png" alt="">550</li>
-            <li><img src="../img/reaction-icons/003-comentario-positivo.png" alt="">100</li>
-            </ul>
-          </div>
-
-          <div class="commentsDiv">
-            <div class="comentariosDiv">
-              <div class="comment">
-                <div class="fotoComment"><img src="https://i.scdn.co/image/ab67616d0000b2735b1cca15efd967f87b1f4d4e" alt=""></div>
-                <div class="textComent">
-                  <h2>Jose Torres</h2>
-                  <p>Perfume de duchi, pantalon versacce.</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="mostrarMasComentarios">
-              <h3>Mostrar mas comentarios</h3>
-            </div>
-            <div class="comentarDiv">
-              <div class="comentarInputDiv">
-                <input type="text" placeholder="Escribe un comentario...">
-                <button>                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
-  <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576zm6.787-8.201L1.591 6.602l4.339 2.76z"/>
-</svg></button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="publiCard">
-          <div class="datosPubli">
-            <div class="fotoDatosPubli"><img src="https://b2472105.smushcdn.com/2472105/wp-content/uploads/2023/01/Perfil-Profesional-_63-819x1024.jpg?lossy=1&strip=1&webp=1" alt=""></div>
-            <div class="datosDatosPubli">
-              <h1>Janice Griffith</h1>
-              <p>Published: June,2 2018 19:PM</p>
-            </div>
-          </div>
-          <div class="descriptionPublicacion">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis omnis beatae, ipsum sunt aliquam quasi magni ullam tenetur officia consequuntur. Odit officiis ex a ipsam ab esse nihil quia voluptates.</p>
-            <a href="./adminDashboard.php">admin</a>
-          </div>
-          <div class="fotoPubliPrincipal">
-            <img class="imagenPublicacionPrincipal" src="https://webunwto.s3.eu-west-1.amazonaws.com/2021-01/un-general-assembly.jpg?VersionId=WCBuWMPVkL.WYPHiNRQP2lHM3.AhwcKv" alt="">
-          </div>
-
-          <div class="reaccionesPubliBar">
-            <li><img src="../img/reaction-icons/001-como.png" alt="">10</li>
-            <li><img src="../img/reaction-icons/002-no-me-gusta.png" alt="">550</li>
-            <li><img src="../img/reaction-icons/003-comentario-positivo.png" alt="">100</li>
-            </ul>
-          </div>
-
-          <div class="commentsDiv">
-            <div class="comentariosDiv">
-              <div class="comment">
-                <div class="fotoComment"><img src="https://i.scdn.co/image/ab67616d0000b2735b1cca15efd967f87b1f4d4e" alt=""></div>
-                <div class="textComent">
-                  <h2>Jose Torres</h2>
-                  <p>Perfume de duchi, pantalon versacce.</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="mostrarMasComentarios">
-              <h3>Mostrar mas comentarios</h3>
-            </div>
-            <div class="comentarDiv">
-              <div class="comentarInputDiv">
-                <input type="text" placeholder="Escribe un comentario...">
-                <button>                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
-  <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576zm6.787-8.201L1.591 6.602l4.339 2.76z"/>
-</svg></button>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="publisSection" id="publisSection">
+        <!-- Posts -->
       </div>
     </div>
     
@@ -263,8 +168,8 @@
 
 
 
-    <dialog class="dialogCrearPubli" id="favDialog">
-      <form method="dialog">
+    <!-- <dialog class="dialogCrearPubli" id="favDialog">
+      <form method="post" id="createPost">
         <section>
           <div class="cerrarDialog">
             <div class="h1crearPuDiv">
@@ -277,20 +182,57 @@
           <div class="datosUserPublicacion">
             <div class="imagenUserPubliNueva"><img src="https://b2472105.smushcdn.com/2472105/wp-content/uploads/2023/01/Perfil-Profesional-_63-819x1024.jpg?lossy=1&strip=1&webp=1" alt=""></div>
             <div class="usernameName">
-              <h3>Joseph Joestar</h3>
+              <h3><?php echo $_SESSION['username']?></h3>
+            </div>
+
+        
+        <div class="textPublicacion">
+            <textarea placeholder="¿Que estas pensando?" name="post_content" id="post_content" cols="10" rows="10"></textarea>
+          </div>
+
+          <div class="imagesPubli">
+              <input type="file" name="post_picture" id="post_picture">
+              <div class="imagesPubliCargadas"><img src="https://cnnespanol.cnn.com/wp-content/uploads/2022/09/GettyImages-1235399686.jpg?quality=100&strip=info" alt=""></div>
+          </div>
+
+          <div class="btn_publicar">
+            <button id="btnCreatePost">Publicar</button>
+          </div>
+        </section>
+      </form>
+    </dialog> -->
+
+    <dialog class="dialogCrearPubli" id="favDialog">
+      <form method="post" id="createPost">
+        <section>
+          <div class="cerrarDialog">
+            <div class="h1crearPuDiv">
+              <h1>Crea una publicación</h1>
+            </div>
+
+            <button id="cancel" type="reset">X</button>
+          </div>
+
+          <div class="datosUserPublicacion">
+            <div class="imagenUserPubliNueva"><img src="https://b2472105.smushcdn.com/2472105/wp-content/uploads/2023/01/Perfil-Profesional-_63-819x1024.jpg?lossy=1&strip=1&webp=1" alt=""></div>
+            <div class="usernameName">
+            <h3><?php echo $_SESSION['username']?></h3>
             </div>
 
           </div>
 
 
           <div class="textPublicacion">
-            <textarea placeholder="¿Que estas pensando?" name="" id="" cols="30" rows="10"></textarea>
+            <textarea placeholder="¿Que estas pensando?" name="post_content" id="post_content" cols="30" rows="10"></textarea>
           </div>
 
           <div class="imagesPubli">
-            <div class="addFotoPublicacion">+</div>
-            <div class="imagesPubliCargadas"><img src="https://cnnespanol.cnn.com/wp-content/uploads/2022/09/GettyImages-1235399686.jpg?quality=100&strip=info" alt=""></div>
-          </div>
+  <label for="post_picture" class="custom-file-upload">
+    <input type="file" name="post_picture" id="post_picture" style="display: none;">
+    <div class="plus-sign">+</div>
+  </label>
+  <div class="imagesPubliCargadas"><img id="preview_image" src="https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg" alt=""></div>
+</div>
 
           <div class="btn_publicar">
             <button id="btn_publicar">Publicar</button>
@@ -304,6 +246,7 @@
 
   </div>
 
+<script src="../js/jquery.js"></script>
   <script>
     (function() {
       var publiButton = document.getElementById("create-publi_form");
@@ -347,8 +290,97 @@ function showComments() {
     likesDiv.style.display = "none";
     commentsDiv.style.display = "block";
 }
+
+document.getElementById('post_picture').addEventListener('change', function(event) {
+    var reader = new FileReader();
+    reader.onload = function() {
+      var output = document.getElementById('preview_image');
+      output.src = reader.result;
+    };
+    reader.readAsDataURL(event.target.files[0]);
+  });
+
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+<script>
+$(document).ready(function () {
+
+  async function getPosts() {
+    $.ajax({
+      type: "get",
+      url: "../php/getPosts.php",
+      success: await function (response) {
+        let posts = JSON.parse(response);
+        let template = ''
+
+        if (posts.length > 0) {
+          // Itera sobre los posts obtenidos para mostrarlos en pantalla
+          posts.forEach( post => {
+            template += `
+                <div class="publiCard">
+                  <div class="datosPubli">
+                    <div class="fotoDatosPubli"><img src="https://b2472105.smushcdn.com/2472105/wp-content/uploads/2023/01/Perfil-Profesional-_63-819x1024.jpg?lossy=1&strip=1&webp=1" alt=""></div>
+                    <div class="datosDatosPubli">
+                      <h1>${post.username}</h1>
+                      <p>Published: ${post.posted_at}</p>
+                    </div>
+                    </div>
+                    <div class="descriptionPublicacion">
+                      <p>${post.post_content}</p>
+                    </div>
+                    <div class="fotoPubliPrincipal">
+                      <img class="imagenPublicacionPrincipal" src="${post.post_picture}" alt="">
+                    </div>
+
+                    <div class="reaccionesPubliBar">
+                        <li><img src="../img/reaction-icons/001-como.png" alt="">10</li>
+                        <li><img src="../img/reaction-icons/002-no-me-gusta.png" alt="">550</li>
+                        <li><img src="../img/reaction-icons/003-comentario-positivo.png" alt="">100</li>
+                      </ul>
+                  </div>
+                </div>
+            `
+          })
+
+          $("#publisSection").html(template);
+        }
+      },
+      error: error => {
+        console.error(error)
+      }
+    });
+  }
+  getPosts();
+
+  $("#btnCreatePost").click(function (e) { 
+    e.preventDefault();
+    let formData = new FormData($("#createPost")[0]);
+
+    $.ajax({
+      type: "post",
+      url: "../php/uploadPost.php",
+      data: formData,
+      processData: false,
+      contentType: false,
+      success: function (response) {
+        console.log(response)
+      },
+      error: function (error) {
+        console.error(error)
+      }
+    });
+
+    getPosts()
+
+    
+  });
+
+  getPosts();
+
+});
+  
+</script>
 </body>
 
 </html>

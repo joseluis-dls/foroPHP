@@ -48,6 +48,7 @@ CREATE TABLE `posts` (
   `post_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `post_content` text NOT NULL,
+  `post_picture` text DEFAULT NULL,
   `posted_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `deleted_at` timestamp NULL DEFAULT NULL,
@@ -110,9 +111,13 @@ CREATE TABLE `roles` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`rol_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+<<<<<<<< HEAD:src/db/forum_08.03.24.sql
+INSERT INTO roles (rol_name) VALUES('admin'),('user');
+========
+>>>>>>>> f3ba28f64a49b528b8e1e9fc5c783be9c92b9954:src/db/forum07_03.2.sql
 --
 -- Table structure for table `tags`
 --
@@ -167,11 +172,13 @@ CREATE TABLE `users` (
   PRIMARY KEY (`user_id`),
   KEY `users_rol_id_foreign` (`rol_id`),
   CONSTRAINT `users_rol_id_foreign` FOREIGN KEY (`rol_id`) REFERENCES `roles` (`rol_id`) ON DELETE CASCADE
+<<<<<<<< HEAD:src/db/forum_08.03.24.sql
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+========
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+>>>>>>>> f3ba28f64a49b528b8e1e9fc5c783be9c92b9954:src/db/forum07_03.2.sql
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
-
-INSERT INTO users (rol_id, username, password, name, lastName, email) VALUES (1, 'admin', '123', 'admin', 'general', 'admin@ucol.mx');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
@@ -181,4 +188,8 @@ INSERT INTO users (rol_id, username, password, name, lastName, email) VALUES (1,
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-07 11:44:49
+<<<<<<<< HEAD:src/db/forum_08.03.24.sql
+-- Dump completed on 2024-03-08 10:05:42
+========
+-- Dump completed on 2024-03-07 12:56:01
+>>>>>>>> f3ba28f64a49b528b8e1e9fc5c783be9c92b9954:src/db/forum07_03.2.sql
