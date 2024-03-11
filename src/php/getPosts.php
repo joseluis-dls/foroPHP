@@ -23,13 +23,35 @@ if ($result) {
             'username' => $row['username']
         );
         $posts[] = $post;
-    }
+    
 
+        // Consulta para obtener los comentarios asociados al post
+        $commentsQuery = "SELECT * FROM comments WHERE post_id = {$row['post_id']} ORDER BY posted_at DESC ";
+        $commentsResult = mysqli_query($connection, $commentsQuery);
+
+        $comments = array();
+        while($commentRow = mysqli_fetch_assoc($commentsResult)) {
+            $comment = array(
+                'comment_id' => $commentRow['comment_id'],
+                'user_id' => $commentRow['user_id'],
+                'comment' => $commentRow['comment'],
+                'posted_at' => $commentRow ['posted_at']
+            );
+            $comments[] = $comment;
+        }
+
+        // Agrega los comentarios al post
+        $post['comments'] = $comments;
+
+        $posts[] = $post;
+
+    }
+    
     // Convierte el array de posts a formato JSON
     $jsonResponse = json_encode($posts);
-    
+
     // Envía el JSON com respuesta a la solicitud de jQuery
-    echo $jsonResponse;
+    echo $jsonResponse; 
 } else {
     // Si hay un error en la consulta, manejarlo adecuadamente
     $error = mysqli_error($connection);
