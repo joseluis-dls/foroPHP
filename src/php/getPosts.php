@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 require_once "../connection.php";
 
@@ -22,8 +22,6 @@ if ($result) {
             'posted_at' => $row['posted_at'],
             'username' => $row['username']
         );
-        $posts[] = $post;
-    
 
         // Consulta para obtener los comentarios asociados al post
         $commentsQuery = "SELECT * FROM comments WHERE post_id = {$row['post_id']} ORDER BY posted_at DESC ";
@@ -43,14 +41,14 @@ if ($result) {
         // Agrega los comentarios al post
         $post['comments'] = $comments;
 
+        // Agrega el post al array de posts
         $posts[] = $post;
-
     }
     
     // Convierte el array de posts a formato JSON
     $jsonResponse = json_encode($posts);
 
-    // Envía el JSON com respuesta a la solicitud de jQuery
+    // Envía el JSON como respuesta a la solicitud de jQuery
     echo $jsonResponse; 
 } else {
     // Si hay un error en la consulta, manejarlo adecuadamente

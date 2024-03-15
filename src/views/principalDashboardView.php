@@ -225,7 +225,7 @@
     </dialog> -->
 
   <dialog class="dialogCrearPubli" id="favDialog">
-    <form method="post" id="createPost">
+    <form  id="createPost">
       <section>
         <div class="cerrarDialog">
           <div class="h1crearPuDiv">
@@ -383,30 +383,39 @@
       }
       getPosts();
 
-      $("#btn_publicar").click(function (e) {
-        e.preventDefault();
-        let formData = new FormData($("#createPost")[0]);
+      let formSubmitted = false;
 
-        $.ajax({
-          type: "post",
-          url: "../php/uploadPost.php",
-          data: formData,
-          processData: false,
-          contentType: false,
-          success: function (response) {
-            console.log(response)
-          },
-          error: function (error) {
-            console.error(error)
-          }
-        });
+$("#btn_publicar").click(function (e) {
+    e.preventDefault();
+    console.log("presionado")
+    
+    // Si el formulario ya se ha enviado, no hacer nada
+    if (formSubmitted) {
+        return;
+    }
+    
+    formSubmitted = true; // Marcar el formulario como enviado
+    
+    let formData = new FormData($("#createPost")[0]);
 
-        getPosts()
+    $.ajax({
+        type: "post",
+        url: "../php/uploadPost.php",
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (response) {
+            console.log(response);
+            formSubmitted = false; // Restablecer el estado del formulario después de que se complete la solicitud AJAX
+        },
+        error: function (error) {
+            console.error(error);
+            formSubmitted = false; // Restablecer el estado del formulario en caso de error
+        }
+    });
 
+});
 
-      });
-
-      getPosts();
 
     });
 
