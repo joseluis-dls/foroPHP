@@ -121,7 +121,9 @@
           <div class="imgInfoCardProfile"><img src="https://i.scdn.co/image/ab67616d0000b2735b1cca15efd967f87b1f4d4e"
               alt=""></div>
           <div class="textInfoCardProfile">
-            <h2>Jose Torres</h2>
+            <h2>
+            <?php echo $_SESSION["username"] ?>
+            </h2>
             <ul>
               <li>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -329,6 +331,7 @@
     });
 
   </script>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
@@ -354,6 +357,7 @@
                     <div class="datosDatosPubli">
                       <h1>${post.username}</h1>
                       <p>Published: ${post.posted_at}</p>
+                      <button id="btn_delete" data-post-id="${post.post_id}">Delete</button>
                     </div>
                     </div>
                     <div class="descriptionPublicacion">
@@ -395,21 +399,37 @@
           contentType: false,
           success: function (response) {
             console.log(response)
+            getPosts();
           },
           error: function (error) {
             console.error(error)
           }
         });
-
-        getPosts()
-
-
       });
 
-      getPosts();
+      $(document).ready(function () {
+        $(document).on('click', '#btn_delete', function () {
+          // Obtener el identificador del post
+          let postId = $(this).data('post-id');
+          let confirmDelete = confirm('¿Seguro que deseas borrar este post?');
+
+          $.ajax({
+            type: "POST",
+            url: '../php/deletePost.php',
+            data: { post_id: postId },
+            success: function (response) {
+              console.log("Post eliminado exitosamente");
+              getPosts();
+            },
+            error: function (error) {
+              console.error("Error al eliminar el post:", error);
+            }
+          });
+        });
+      });
+
 
     });
-
   </script>
 </body>
 
