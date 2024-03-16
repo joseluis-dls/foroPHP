@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="../styles/publisStyles.css">
   <link rel="stylesheet" href="../styles/modalCrearPublicacion.css">
   <link rel="stylesheet" href="../styles/modalAccept.css">
+  <link rel="stylesheet" href="../styles/comments.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
@@ -122,7 +123,7 @@
           <div class="imgInfoCardProfile"><img src="https://i.scdn.co/image/ab67616d0000b2735b1cca15efd967f87b1f4d4e"
               alt=""></div>
           <div class="textInfoCardProfile">
-            <h2>Jose Torres</h2>
+            <h2> <?php echo $_SESSION['username'] ?></h2>
             <ul>
               <li>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -212,7 +213,19 @@
         </div>
 
 
+
+
         <div class="textPublicacion">
+            <select style="width: 35%;
+    background: transparent;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    padding-bottom: 1%;" name="" id="">
+              <option value="FP">Fin de la pobreza</option>
+              <option value="HC">Hambre Cero</option>
+              <option value="SB">Salud y bienestar</option>
+            </select>
           <textarea placeholder="¿Que estas pensando?" name="post_content" id="post_content" cols="30"
             rows="10"></textarea>
         </div>
@@ -349,6 +362,14 @@
                                         <li><img src="../img/reaction-icons/002-no-me-gusta.png" alt="">550</li>
                                         <li><img src="../img/reaction-icons/003-comentario-positivo.png" alt="">100</li>
                                     </ul>
+                                </div>
+
+                                <div class="commentsDiv">
+                                  <img src="https://i.scdn.co/image/ab67616d0000b2735b1cca15efd967f87b1f4d4e"></img>
+                                  <input type="text" placeholder="Escribe un comentario"></input>
+                                  <button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-send" viewBox="0 0 16 16">
+  <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576zm6.787-8.201L1.591 6.602l4.339 2.76z"/>
+</svg></button>
                                 </div>
                             </div>
                         `;
