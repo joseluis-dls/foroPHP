@@ -8,6 +8,7 @@
   <title>Document</title>
   <link rel="stylesheet" href="../styles/publisStyles.css">
   <link rel="stylesheet" href="../styles/modalCrearPublicacion.css">
+  <link rel="stylesheet" href="../styles/modalAccept.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
@@ -187,43 +188,6 @@
 
   </div>
 
-
-
-
-  <!-- <dialog class="dialogCrearPubli" id="favDialog">
-      <form method="post" id="createPost">
-        <section>
-          <div class="cerrarDialog">
-            <div class="h1crearPuDiv">
-              <h1>Crea una publicación</h1>
-            </div>
-
-            <button id="cancel" type="reset">X</button>
-          </div>
-
-          <div class="datosUserPublicacion">
-            <div class="imagenUserPubliNueva"><img src="https://b2472105.smushcdn.com/2472105/wp-content/uploads/2023/01/Perfil-Profesional-_63-819x1024.jpg?lossy=1&strip=1&webp=1" alt=""></div>
-            <div class="usernameName">
-              <h3><?php echo $_SESSION['username'] ?></h3>
-            </div>
-
-        
-        <div class="textPublicacion">
-            <textarea placeholder="¿Que estas pensando?" name="post_content" id="post_content" cols="10" rows="10"></textarea>
-          </div>
-
-          <div class="imagesPubli">
-              <input type="file" name="post_picture" id="post_picture">
-              <div class="imagesPubliCargadas"><img src="https://cnnespanol.cnn.com/wp-content/uploads/2022/09/GettyImages-1235399686.jpg?quality=100&strip=info" alt=""></div>
-          </div>
-
-          <div class="btn_publicar">
-            <button id="btnCreatePost">Publicar</button>
-          </div>
-        </section>
-      </form>
-    </dialog> -->
-
   <dialog class="dialogCrearPubli" id="favDialog">
     <form  id="createPost">
       <section>
@@ -271,6 +235,14 @@
 
 
   </div>
+
+  <div id="myModal"  class="modal">
+  <div class="modal-content" style="margin-top:20%;">
+    <p style="text-align:center; font-size:17px;">El post se ha publicado correctamente.</p>
+    <button id="reloadPage">Aceptar</button>
+  </div>
+  </div>
+
 
   </div>
 
@@ -343,34 +315,43 @@
           success: await function (response) {
             let posts = JSON.parse(response);
             let template = ''
-
+            console.log(posts)
             if (posts.length > 0) {
               // Itera sobre los posts obtenidos para mostrarlos en pantalla
               posts.forEach(post => {
                 template += `
-                <div class="publiCard">
-                  <div class="datosPubli">
-                    <div class="fotoDatosPubli"><img src="https://b2472105.smushcdn.com/2472105/wp-content/uploads/2023/01/Perfil-Profesional-_63-819x1024.jpg?lossy=1&strip=1&webp=1" alt=""></div>
-                    <div class="datosDatosPubli">
-                      <h1>${post.username}</h1>
-                      <p>Published: ${post.posted_at}</p>
-                    </div>
-                    </div>
-                    <div class="descriptionPublicacion">
-                      <p>${post.post_content}</p>
-                    </div>
-                    <div class="fotoPubliPrincipal">
-                      <img class="imagenPublicacionPrincipal" src="${post.post_picture}" alt="">
-                    </div>
+                            <div class="publiCard">
+                                <div class="datosPubli">
+                                    <div class="fotoDatosPubli"><img src="https://b2472105.smushcdn.com/2472105/wp-content/uploads/2023/01/Perfil-Profesional-_63-819x1024.jpg?lossy=1&strip=1&webp=1" alt=""></div>
+                                    <div class="datosDatosPubli">
+                                        <h1>${post.username}</h1>
+                                        <p>Published: ${post.posted_at}</p>
+                                    </div>
+                                </div>
+                                <div class="descriptionPublicacion">
+                                    <p>${post.post_content}</p>
+                                </div>
+                        `;
 
-                    <div class="reaccionesPubliBar">
-                        <li><img src="../img/reaction-icons/001-como.png" alt="">10</li>
-                        <li><img src="../img/reaction-icons/002-no-me-gusta.png" alt="">550</li>
-                        <li><img src="../img/reaction-icons/003-comentario-positivo.png" alt="">100</li>
-                      </ul>
-                  </div>
-                </div>
-            `
+                        // Verifica si hay una imagen para mostrar
+                        if (post.post_picture !== "/foroPHP/src/img/posts/") {
+                            template += `
+                                <div class="fotoPubliPrincipal">
+                                    <img class="imagenPublicacionPrincipal" src="${post.post_picture}" alt="">
+                                </div>
+                            `;
+                        }
+
+                        template += `
+                                <div class="reaccionesPubliBar">
+                                    <ul style="display:flex;">
+                                        <li><img src="../img/reaction-icons/001-como.png" alt="">10</li>
+                                        <li><img src="../img/reaction-icons/002-no-me-gusta.png" alt="">550</li>
+                                        <li><img src="../img/reaction-icons/003-comentario-positivo.png" alt="">100</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        `;
               })
 
               $("#publisSection").html(template);
@@ -406,6 +387,10 @@ $("#btn_publicar").click(function (e) {
         contentType: false,
         success: function (response) {
             console.log(response);
+            // $("#favDialog").css("display", "none")
+            favDialog.close();
+            document.body.classList.remove("bloquear-scroll");
+            $("#myModal").css("display", "block");
             formSubmitted = false; // Restablecer el estado del formulario después de que se complete la solicitud AJAX
         },
         error: function (error) {
@@ -416,6 +401,14 @@ $("#btn_publicar").click(function (e) {
 
 });
 
+$(".close").click(function() {
+            $("#myModal").css("display", "none");
+        });
+
+        // Recargar la página cuando se haga clic en el botón Aceptar
+        $("#reloadPage").click(function() {
+            location.reload();
+        });
 
     });
 

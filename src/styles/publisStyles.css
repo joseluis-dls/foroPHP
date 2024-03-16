@@ -15,7 +15,7 @@
     height: 100px;
     margin-left: 10%;
     background-color: #F9F9F9; 
-    box-shadow: -8px 6px 20px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 12px 9px -1px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     z-index: 1;
     display: flex;
@@ -149,10 +149,10 @@
 }
 
 .publiCard{
-    margin-bottom: 24%;
+    margin-bottom: 12%;
     width: 100%;
     height: auto;
-    box-shadow: -20px 40px 40px 10px rgba(0, 0, 0, 0.3); /* Sombra */
+    box-shadow: 0px 12px 9px -1px rgba(0, 0, 0, 0.1);
 }
 
 .datosPubli{
@@ -211,13 +211,14 @@
     margin-top: 5%;
     width: 90%;
     height: 60px;
-    margin-left: 5%;
+    margin-left: 3%;
     display: flex;
+    margin-bottom: 3%;
 }
 
 .reaccionesPubliBar li{
     list-style: none;
-    margin-right: 5%;
+    margin-right: 8%;
 }
 
 .reaccionesPubliBar li:hover{
