@@ -121,7 +121,7 @@ if (mysqli_num_rows($result) > 0) {
       <div id="create-publi_form" class="divCardCrearPubli">
         <div class="imgDivCrearPubli">
           <img class="centralSideImageImage"
-            src="https://b2472105.smushcdn.com/2472105/wp-content/uploads/2023/01/Perfil-Profesional-_63-819x1024.jpg?lossy=1&strip=1&webp=1"
+            src="<?php echo $profile_photo; ?>"
             alt="">
         </div>
         <div class="ipDivCrearPubli">
