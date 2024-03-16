@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="../styles/modalCrearPublicacion.css">
   <link rel="stylesheet" href="../styles/modalAccept.css">
   <link rel="stylesheet" href="../styles/comments.css">
+  <link rel="stylesheet" href="../styles/imagenAmpliada.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
@@ -256,6 +257,11 @@
   </div>
   </div>
 
+  <div id="imagenAmpliada" class="imagen-ampliada">
+  <span class="cerrar-imagen">&times;</span>
+  <img id="imagenAmpliadaSrc" class="imagen-ampliada-src" src="" alt="">
+</div>
+
 
   </div>
 
@@ -319,73 +325,88 @@
     crossorigin="anonymous"></script>
 
   <script>
+    
+
     $(document).ready(function () {
-
       async function getPosts() {
-        $.ajax({
-          type: "get",
-          url: "../php/getPosts.php",
-          success: await function (response) {
-            let posts = JSON.parse(response);
-            let template = ''
-            console.log(posts)
-            if (posts.length > 0) {
-              // Itera sobre los posts obtenidos para mostrarlos en pantalla
-              posts.forEach(post => {
-                template += `
-                            <div class="publiCard">
-                                <div class="datosPubli">
-                                    <div class="fotoDatosPubli"><img src="https://b2472105.smushcdn.com/2472105/wp-content/uploads/2023/01/Perfil-Profesional-_63-819x1024.jpg?lossy=1&strip=1&webp=1" alt=""></div>
-                                    <div class="datosDatosPubli">
-                                        <h1>${post.username}</h1>
-                                        <p>Published: ${post.posted_at}</p>
-                                    </div>
-                                </div>
-                                <div class="descriptionPublicacion">
-                                    <p>${post.post_content}</p>
-                                </div>
-                        `;
+    $.ajax({
+      type: "get",
+      url: "../php/getPosts.php",
+      success: await function (response) {
+        let posts = JSON.parse(response);
+        let template = ''
+        console.log(posts)
+        if (posts.length > 0) {
+          // Itera sobre los posts obtenidos para mostrarlos en pantalla
+          posts.forEach(post => {
+            template += `
+              <div class="publiCard">
+                <div class="datosPubli">
+                  <div class="fotoDatosPubli"><img src="https://b2472105.smushcdn.com/2472105/wp-content/uploads/2023/01/Perfil-Profesional-_63-819x1024.jpg?lossy=1&strip=1&webp=1" alt=""></div>
+                  <div class="datosDatosPubli">
+                    <h1>${post.username}</h1>
+                    <p>Published: ${post.posted_at}</p>
+                  </div>
+                </div>
+                <div class="descriptionPublicacion">
+                  <p>${post.post_content}</p>
+                </div>
+            `;
 
-                        // Verifica si hay una imagen para mostrar
-                        if (post.post_picture !== "/foroPHP/src/img/posts/") {
-                            template += `
-                                <div class="fotoPubliPrincipal">
-                                    <img class="imagenPublicacionPrincipal" src="${post.post_picture}" alt="">
-                                </div>
-                            `;
-                        }
-
-                        template += `
-                                <div class="reaccionesPubliBar">
-                                    <ul style="display:flex;">
-                                        <li><img src="../img/reaction-icons/001-como.png" alt="">10</li>
-                                        <li><img src="../img/reaction-icons/002-no-me-gusta.png" alt="">550</li>
-                                        <li><img src="../img/reaction-icons/003-comentario-positivo.png" alt="">100</li>
-                                    </ul>
-                                </div>
-
-                                <div class="commentsDiv">
-                                  <img src="https://i.scdn.co/image/ab67616d0000b2735b1cca15efd967f87b1f4d4e"></img>
-                                  <input type="text" placeholder="Escribe un comentario"></input>
-                                  <button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-send" viewBox="0 0 16 16">
-  <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576zm6.787-8.201L1.591 6.602l4.339 2.76z"/>
-</svg></button>
-                                </div>
-                            </div>
-                        `;
-              })
-
-              $("#publisSection").html(template);
+            // Verifica si hay una imagen para mostrar
+            if (post.post_picture !== "/foroPHP/src/img/posts/") {
+              template += `
+                <div class="fotoPubliPrincipal">
+                  <img class="imagenPublicacionPrincipal" src="${post.post_picture}" alt="">
+                </div>
+              `;
             }
-          },
-          error: error => {
-            console.error(error)
-          }
-        });
+
+            template += `
+              <div class="reaccionesPubliBar">
+                <ul style="display:flex;">
+                  <li><img src="../img/reaction-icons/001-como.png" alt="">10</li>
+                  <li><img src="../img/reaction-icons/002-no-me-gusta.png" alt="">550</li>
+                  <li><img src="../img/reaction-icons/003-comentario-positivo.png" alt="">100</li>
+                </ul>
+              </div>
+              <div class="commentsDiv">
+                <img src="https://i.scdn.co/image/ab67616d0000b2735b1cca15efd967f87b1f4d4e"></img>
+                <input type="text" placeholder="Escribe un comentario"></input>
+                <button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-send" viewBox="0 0 16 16">
+                  <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576zm6.787-8.201L1.591 6.602l4.339 2.76z"/>
+                </svg></button>
+              </div>
+            </div>
+          `;
+          })
+
+          $("#publisSection").html(template);
+          $("#imagenAmpliada").hide();
+          // Agregar evento click para mostrar la imagen ampliada
+          $(".imagenPublicacionPrincipal").click(function() {
+            const imagenSrc = $(this).attr("src");
+            $("#imagenAmpliadaSrc").attr("src", imagenSrc);
+            $("#imagenAmpliada").show();
+          });
+
+          // Agregar evento click para cerrar la imagen ampliada
+          $(".cerrar-imagen").click(function() {
+            $("#imagenAmpliada").hide();
+          });
+        }
+      },
+      error: error => {
+        console.error(error)
       }
+    });
+  }
+
       getPosts();
 
       let formSubmitted = false;
+
+      
 
 $("#btn_publicar").click(function (e) {
     e.preventDefault();
