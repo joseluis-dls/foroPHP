@@ -1,4 +1,24 @@
-<?php session_start(); ?>
+<?php 
+require_once("../connection.php");
+session_start(); 
+$user = $_SESSION["username"];
+
+// Consulta preparada para prevenir inyección SQL 
+$query = mysqli_prepare($connection, "SELECT * FROM users WHERE username = ? AND deleted_at IS NULL;");
+mysqli_stmt_bind_param($query, "s", $user);
+mysqli_stmt_execute($query);
+$result = mysqli_stmt_get_result($query);
+
+if (mysqli_num_rows($result) > 0) {
+    $data = mysqli_fetch_assoc($result);
+
+    $profile_photo = $data["profile_photo"];
+  
+} else {
+  echo "No se encontró el user";
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -67,11 +87,11 @@
     <div class="leftSide">
       <div class="divLeftSidePresentation">
         <div class="imgPresntacionLeft"><img
-            src="https://b2472105.smushcdn.com/2472105/wp-content/uploads/2023/01/Perfil-Profesional-_63-819x1024.jpg?lossy=1&strip=1&webp=1"
+            src="<?php  echo $profile_photo;?>"
             alt=""></div>
         <div class="usernamePresentacionLeft">
           <h1>
-            <?php echo $_SESSION["username"] ?>
+            <a href=""><?php echo $_SESSION["username"] ?></a>
           </h1>
         </div>
       </div>
@@ -121,10 +141,9 @@
         <h3>P E R F I L</h3>
         <div class="linePerfilProfile"></div>
         <div class="infoPerfilCard">
-          <div class="imgInfoCardProfile"><img src="https://i.scdn.co/image/ab67616d0000b2735b1cca15efd967f87b1f4d4e"
-              alt=""></div>
+          <div class="imgInfoCardProfile"><img src="<?php echo $profile_photo; ?>" alt="profile_photo"></div>
           <div class="textInfoCardProfile">
-            <h2> <?php echo $_SESSION['username'] ?></h2>
+            <h2> <?php echo $_SESSION['username']; ?></h2>
             <ul>
               <li>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -203,7 +222,7 @@
 
         <div class="datosUserPublicacion">
           <div class="imagenUserPubliNueva"><img
-              src="https://b2472105.smushcdn.com/2472105/wp-content/uploads/2023/01/Perfil-Profesional-_63-819x1024.jpg?lossy=1&strip=1&webp=1"
+              src="<?php echo $profile_photo; ?>"
               alt=""></div>
           <div class="usernameName">
             <h3>
