@@ -180,9 +180,10 @@ if (!empty($_SESSION['active'])) {
 
                 <input type="text" name="username" placeholder="Username"
                     value="<?php echo isset($_POST['username']) ? htmlspecialchars($_POST['username']) : ''; ?>">
-                <input type="password" name="password" placeholder="Password">
 
                 <input type="file" name="profile_photo" id="profile_photo">
+
+                <input type="password" name="password" placeholder="Password">
 
                 <input type="password" name="confirm_password" placeholder="Confirm Password">
                 <div class="terminos_login">
