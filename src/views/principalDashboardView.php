@@ -347,6 +347,8 @@ if (mysqli_num_rows($result) > 0) {
     
 
     $(document).ready(function () {
+      $("#imagenAmpliada").hide();
+      
       async function getPosts() {
     $.ajax({
       type: "get",

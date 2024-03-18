@@ -67,13 +67,13 @@ if (!empty($_SESSION['active'])) {
                     
                     // Obtener el nombre de la imagen
                     $picture_name = $_FILES["profile_photo"]["name"];
-                    $full_dir = __DIR__ . "/../img/users/" . $picture_name;
+                    $full_dir = __DIR__ . "\\img\\users\\" . $picture_name; // ???
 
                     // Ajusta la ruta relativa para la db
                     $dir = "/foroPHP/src/img/users/" . $picture_name;
 
                     // Mueve la imagenn al directorio de destino
-                    move_uploaded_file($_FILES["post_picture"]["tmp_name"], $full_dir);
+                    move_uploaded_file($_FILES["profile_photo"]["tmp_name"], $full_dir);
 
                 } else {
                     // Si el usuario no carga una imagen, usa una imagen por defecto
