@@ -77,7 +77,7 @@ if (!empty($_SESSION['active'])) {
 
                 } else {
                     // Si el usuario no carga una imagen, usa una imagen por defecto
-                    $dir = "/foroPHP/img/default/default_user.jpg";
+                    $dir = "/foroPHP/src/img/default/default_user.jpg";
                 }
 
                 // Verificar si las contraseñas coinciden
