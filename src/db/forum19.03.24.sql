@@ -55,7 +55,7 @@ CREATE TABLE `posts` (
   PRIMARY KEY (`post_id`),
   KEY `posts_user_id_foreign` (`user_id`),
   CONSTRAINT `posts_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -114,10 +114,6 @@ CREATE TABLE `roles` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
-<<<<<<<< HEAD:src/db/forum_08.03.24.sql
-INSERT INTO roles (rol_name) VALUES('admin'),('user');
-========
->>>>>>>> f3ba28f64a49b528b8e1e9fc5c783be9c92b9954:src/db/forum07_03.2.sql
 --
 -- Table structure for table `tags`
 --
@@ -172,11 +168,7 @@ CREATE TABLE `users` (
   PRIMARY KEY (`user_id`),
   KEY `users_rol_id_foreign` (`rol_id`),
   CONSTRAINT `users_rol_id_foreign` FOREIGN KEY (`rol_id`) REFERENCES `roles` (`rol_id`) ON DELETE CASCADE
-<<<<<<<< HEAD:src/db/forum_08.03.24.sql
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-========
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
->>>>>>>> f3ba28f64a49b528b8e1e9fc5c783be9c92b9954:src/db/forum07_03.2.sql
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -188,8 +180,4 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
-<<<<<<<< HEAD:src/db/forum_08.03.24.sql
--- Dump completed on 2024-03-08 10:05:42
-========
--- Dump completed on 2024-03-07 12:56:01
->>>>>>>> f3ba28f64a49b528b8e1e9fc5c783be9c92b9954:src/db/forum07_03.2.sql
+-- Dump completed on 2024-03-19 16:32:21
