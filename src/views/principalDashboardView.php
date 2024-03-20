@@ -375,7 +375,7 @@ if (mysqli_num_rows($result) > 0) {
                 template += `
                   <div class="publiCard">
                     <div class="datosPubli">
-                      <div class="fotoDatosPubli"><img src="https://b2472105.smushcdn.com/2472105/wp-content/uploads/2023/01/Perfil-Profesional-_63-819x1024.jpg?lossy=1&strip=1&webp=1" alt=""></div>
+                      <div class="fotoDatosPubli"><img src="${post.profile_photo}" alt=""></div>
                       <div class="datosDatosPubli">
                         <h1>${post.username}</h1>
                         <p>Published: ${post.posted_at}</p>
@@ -405,7 +405,7 @@ if (mysqli_num_rows($result) > 0) {
                     </ul>
                   </div>
                   <div class="commentsDiv">
-                    <img src="https://i.scdn.co/image/ab67616d0000b2735b1cca15efd967f87b1f4d4e"></img>
+                    <img src="${post.profile_photo}"></img>
                     <input type="text" placeholder="Escribe un comentario"></input>
                     <button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-send" viewBox="0 0 16 16">
                       <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576zm6.787-8.201L1.591 6.602l4.339 2.76z"/>
