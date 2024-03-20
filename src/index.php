@@ -79,7 +79,7 @@ if (!empty($_SESSION['active'])) {
                     } else {
                         $alert = "Error al registrar el usuario: " . mysqli_error($connection);
                     }
-            }
+                }
  
             }
 

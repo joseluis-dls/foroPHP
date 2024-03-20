@@ -418,11 +418,11 @@
             url: '../php/deletePost.php',
             data: { post_id: postId },
             success: function (response) {
-              console.log("Post eliminado exitosamente");
-              getPosts();
+              console.log(response);
+              window.location.reload();
             },
             error: function (error) {
-              console.error("Error al eliminar el post:", error);
+              console.error(error);
             }
           });
         });
