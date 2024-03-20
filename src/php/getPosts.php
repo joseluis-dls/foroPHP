@@ -6,6 +6,7 @@ require_once "../connection.php";
 $query = "SELECT p.post_id, p.post_content, p.post_picture, p.posted_at, u.username
             FROM posts p
             INNER JOIN users u ON p.user_id = u.user_id
+            WHERE p.deleted_at IS NULL
             ORDER BY p.posted_at DESC;";
 $result = mysqli_query($connection, $query);
 
