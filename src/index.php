@@ -1,5 +1,4 @@
-<?php
-session_start();
+<?php session_start();
 require_once "connection.php"; // generalizar el acceso a la conexión
 
 
@@ -33,6 +32,7 @@ if (!empty($_SESSION['active'])) {
                         $_SESSION['email'] = $data['email'];
                         $_SESSION['username'] = $data['username'];
                         $_SESSION['rol_id'] = $data['rol_id'];
+                        $_SESSION['profile_photo'] = $data['profile_photo'];
 
                         if ($data['rol_id'] == 1) {
                             header('location: views/principalDashboardView.php');
@@ -61,8 +61,25 @@ if (!empty($_SESSION['active'])) {
                 $email = mysqli_real_escape_string($connection, $_POST['email']);
                 $password = mysqli_real_escape_string($connection, $_POST['password']);
                 $confirm_password = mysqli_real_escape_string($connection, $_POST['confirm_password']);
-    
-    
+
+                // Manejar la carga de la imagen de perfil
+                if (isset($_FILES["profile_photo"]) && !empty($_FILES["profile_photo"]["name"])){
+                    
+                    // Obtener el nombre de la imagen
+                    $picture_name = $_FILES["profile_photo"]["name"];
+                    $full_dir = __DIR__ . "\\img\\users\\" . $picture_name; // ???
+
+                    // Ajusta la ruta relativa para la db
+                    $dir = "/foroPHP/src/img/users/" . $picture_name;
+
+                    // Mueve la imagenn al directorio de destino
+                    move_uploaded_file($_FILES["profile_photo"]["tmp_name"], $full_dir);
+
+                } else {
+                    // Si el usuario no carga una imagen, usa una imagen por defecto
+                    $dir = "/foroPHP/src/img/default/default_user.jpg";
+                }
+
                 // Verificar si las contraseñas coinciden
                 if ($password != $confirm_password) {
                     $alert = "Las contraseñas no coinciden";
@@ -70,8 +87,8 @@ if (!empty($_SESSION['active'])) {
                     $hashed_password = password_hash(mysqli_real_escape_string($connection, $_POST['password']), PASSWORD_DEFAULT);
     
                     // Continuar con la inserción en la base de datos
-                    $query = "INSERT INTO users (rol_id, username, password, name, lastName, email) 
-                            VALUES (2, '$username', '$hashed_password', '$name', '$lastName', '$email')";
+                    $query = "INSERT INTO users (rol_id, username, password, name, lastName, email, profile_photo) 
+                            VALUES (2, '$username', '$hashed_password', '$name', '$lastName', '$email', '$dir')";
     
                     if (mysqli_query($connection, $query)) {
                         $alert = "Usuario registrado exitosamente";
@@ -153,7 +170,7 @@ if (!empty($_SESSION['active'])) {
                 <p>Ingresa tus datos:</p>
             </div>
 
-            <form id="RegisterForm" action="" method="post">
+            <form id="RegisterForm" method="post" enctype="multipart/form-data">
                 <input type="text" name="name" placeholder="Name" value="<?php echo isset($_POST['name']) ? htmlspecialchars($_POST['name']) : ''; ?>">
 
                 <input type="text" name="lastName" placeholder="Last Name" value="<?php echo isset($_POST['lastName']) ? htmlspecialchars($_POST['lastName']) : ''; ?>">
@@ -163,6 +180,9 @@ if (!empty($_SESSION['active'])) {
 
                 <input type="text" name="username" placeholder="Username"
                     value="<?php echo isset($_POST['username']) ? htmlspecialchars($_POST['username']) : ''; ?>">
+
+                <input type="file" name="profile_photo" id="profile_photo">
+
                 <input type="password" name="password" placeholder="Password">
 
                 <input type="password" name="confirm_password" placeholder="Confirm Password">

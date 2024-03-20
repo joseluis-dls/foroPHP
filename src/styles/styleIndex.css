@@ -65,6 +65,11 @@
     border: 1px solid rgb(155, 150, 150);
 }
 
+#Login input:hover{
+    transform: scaleX(105%);
+    transition: 200ms;
+}
+
 .buttons {
     display: flex;
     justify-content: space-around;
@@ -206,4 +211,8 @@
 .alert{
     margin-left: 15%;
     font-weight: 800;
+}
+
+.icon-margin{
+    margin-right: 10px;
 }
