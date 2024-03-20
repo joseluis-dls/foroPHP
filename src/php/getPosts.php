@@ -1,9 +1,9 @@
 <?php
-
+session_start();
 require_once "../connection.php";
 
 // Consulta para obtener los posts desde la base de datos
-$query = "SELECT p.post_id, p.post_content, p.post_picture, p.posted_at, u.username, u.profile_photo
+$query = "SELECT p.post_id, p.post_content, p.post_picture, p.posted_at, u.username, u.user_id, u.profile_photo
             FROM posts p
             INNER JOIN users u ON p.user_id = u.user_id
             WHERE p.deleted_at IS NULL
@@ -22,7 +22,9 @@ if ($result) {
             'post_picture' => $row['post_picture'],
             'posted_at' => $row['posted_at'],
             'username' => $row['username'],
-            'profile_photo' => $row['profile_photo']
+            'profile_photo' => $row['profile_photo'],
+            'session_id' => $_SESSION['user_id'],
+            'user_id' => $row['user_id']
         );
 
         // Consulta para obtener los comentarios asociados al post

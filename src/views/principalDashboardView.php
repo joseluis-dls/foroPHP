@@ -379,13 +379,25 @@ if (mysqli_num_rows($result) > 0) {
                       <div class="datosDatosPubli">
                         <h1>${post.username}</h1>
                         <p>Published: ${post.posted_at}</p>
+                `;
+                if (post.session_id == post.user_id) {
+                  template += `
                         <button id="btn_delete" data-post-id="${post.post_id}">Delete</button>
                       </div>
                     </div>
                     <div class="descriptionPublicacion">
                       <p>${post.post_content}</p>
                     </div>
-                `;
+                  `
+                } else {
+                  template += `
+                          </div>
+                        </div>
+                        <div class="descriptionPublicacion">
+                          <p>${post.post_content}</p>
+                        </div>
+                  `
+                }
 
                 // Verifica si hay una imagen para mostrar
                 if (post.post_picture !== "/foroPHP/src/img/posts/") {
