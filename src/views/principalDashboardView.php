@@ -293,10 +293,6 @@ if (mysqli_num_rows($result) > 0) {
   <div id="imagenAmpliada" class="imagen-ampliada">
   <span class="cerrar-imagen">&times;</span>
   <img id="imagenAmpliadaSrc" class="imagen-ampliada-src" src="" alt="">
-</div>
-
-
-  </div>
 
   <script src="../js/jquery.js"></script>
   <script>
@@ -356,7 +352,8 @@ if (mysqli_num_rows($result) > 0) {
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"></script>
+    crossorigin="anonymous">
+  </script>
 
   <script>
     
@@ -365,78 +362,79 @@ if (mysqli_num_rows($result) > 0) {
       $("#imagenAmpliada").hide();
       
       async function getPosts() {
-    $.ajax({
-      type: "get",
-      url: "../php/getPosts.php",
-      success: await function (response) {
-        let posts = JSON.parse(response);
-        let template = ''
-        console.log(posts)
-        if (posts.length > 0) {
-          // Itera sobre los posts obtenidos para mostrarlos en pantalla
-          posts.forEach(post => {
-            template += `
-              <div class="publiCard">
-                <div class="datosPubli">
-                  <div class="fotoDatosPubli"><img src="https://b2472105.smushcdn.com/2472105/wp-content/uploads/2023/01/Perfil-Profesional-_63-819x1024.jpg?lossy=1&strip=1&webp=1" alt=""></div>
-                  <div class="datosDatosPubli">
-                    <h1>${post.username}</h1>
-                    <p>Published: ${post.posted_at}</p>
+        $.ajax({
+          type: "get",
+          url: "../php/getPosts.php",
+          success: await function (response) {
+            let posts = JSON.parse(response);
+            let template = ''
+            console.log(posts)
+            if (posts.length > 0) {
+              // Itera sobre los posts obtenidos para mostrarlos en pantalla
+              posts.forEach(post => {
+                template += `
+                  <div class="publiCard">
+                    <div class="datosPubli">
+                      <div class="fotoDatosPubli"><img src="https://b2472105.smushcdn.com/2472105/wp-content/uploads/2023/01/Perfil-Profesional-_63-819x1024.jpg?lossy=1&strip=1&webp=1" alt=""></div>
+                      <div class="datosDatosPubli">
+                        <h1>${post.username}</h1>
+                        <p>Published: ${post.posted_at}</p>
+                        <button id="btn_delete" data-post-id="${post.post_id}">Delete</button>
+                      </div>
+                    </div>
+                    <div class="descriptionPublicacion">
+                      <p>${post.post_content}</p>
+                    </div>
+                `;
+
+                // Verifica si hay una imagen para mostrar
+                if (post.post_picture !== "/foroPHP/src/img/posts/") {
+                  template += `
+                    <div class="fotoPubliPrincipal">
+                      <img class="imagenPublicacionPrincipal" src="${post.post_picture}" alt="">
+                    </div>
+                  `;
+                }
+
+                template += `
+                  <div class="reaccionesPubliBar">
+                    <ul style="display:flex;">
+                      <li><img src="../img/reaction-icons/001-como.png" alt="">10</li>
+                      <li><img src="../img/reaction-icons/002-no-me-gusta.png" alt="">550</li>
+                      <li><img src="../img/reaction-icons/003-comentario-positivo.png" alt="">100</li>
+                    </ul>
+                  </div>
+                  <div class="commentsDiv">
+                    <img src="https://i.scdn.co/image/ab67616d0000b2735b1cca15efd967f87b1f4d4e"></img>
+                    <input type="text" placeholder="Escribe un comentario"></input>
+                    <button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-send" viewBox="0 0 16 16">
+                      <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576zm6.787-8.201L1.591 6.602l4.339 2.76z"/>
+                    </svg></button>
                   </div>
                 </div>
-                <div class="descriptionPublicacion">
-                  <p>${post.post_content}</p>
-                </div>
-            `;
-
-            // Verifica si hay una imagen para mostrar
-            if (post.post_picture !== "/foroPHP/src/img/posts/") {
-              template += `
-                <div class="fotoPubliPrincipal">
-                  <img class="imagenPublicacionPrincipal" src="${post.post_picture}" alt="">
-                </div>
               `;
+              })
+
+              $("#publisSection").html(template);
+              $("#imagenAmpliada").hide();
+              // Agregar evento click para mostrar la imagen ampliada
+              $(".imagenPublicacionPrincipal").click(function() {
+                const imagenSrc = $(this).attr("src");
+                $("#imagenAmpliadaSrc").attr("src", imagenSrc);
+                $("#imagenAmpliada").show();
+              });
+
+              // Agregar evento click para cerrar la imagen ampliada
+              $(".cerrar-imagen").click(function() {
+                $("#imagenAmpliada").hide();
+              });
             }
-
-            template += `
-              <div class="reaccionesPubliBar">
-                <ul style="display:flex;">
-                  <li><img src="../img/reaction-icons/001-como.png" alt="">10</li>
-                  <li><img src="../img/reaction-icons/002-no-me-gusta.png" alt="">550</li>
-                  <li><img src="../img/reaction-icons/003-comentario-positivo.png" alt="">100</li>
-                </ul>
-              </div>
-              <div class="commentsDiv">
-                <img src="https://i.scdn.co/image/ab67616d0000b2735b1cca15efd967f87b1f4d4e"></img>
-                <input type="text" placeholder="Escribe un comentario"></input>
-                <button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-send" viewBox="0 0 16 16">
-                  <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576zm6.787-8.201L1.591 6.602l4.339 2.76z"/>
-                </svg></button>
-              </div>
-            </div>
-          `;
-          })
-
-          $("#publisSection").html(template);
-          $("#imagenAmpliada").hide();
-          // Agregar evento click para mostrar la imagen ampliada
-          $(".imagenPublicacionPrincipal").click(function() {
-            const imagenSrc = $(this).attr("src");
-            $("#imagenAmpliadaSrc").attr("src", imagenSrc);
-            $("#imagenAmpliada").show();
-          });
-
-          // Agregar evento click para cerrar la imagen ampliada
-          $(".cerrar-imagen").click(function() {
-            $("#imagenAmpliada").hide();
-          });
-        }
-      },
-      error: error => {
-        console.error(error)
+          },
+          error: error => {
+            console.error(error)
+          }
+        });
       }
-    });
-  }
 
       getPosts();
 
@@ -444,50 +442,69 @@ if (mysqli_num_rows($result) > 0) {
 
       
 
-$("#btn_publicar").click(function (e) {
-    e.preventDefault();
-    console.log("presionado")
-    
-    // Si el formulario ya se ha enviado, no hacer nada
-    if (formSubmitted) {
-        return;
-    }
-    
-    formSubmitted = true; // Marcar el formulario como enviado
-    
-    let formData = new FormData($("#createPost")[0]);
+  $("#btn_publicar").click(function (e) {
+      e.preventDefault();
+      console.log("presionado")
+      
+      // Si el formulario ya se ha enviado, no hacer nada
+      if (formSubmitted) {
+          return;
+      }
+      
+      formSubmitted = true; // Marcar el formulario como enviado
+      
+      let formData = new FormData($("#createPost")[0]);
 
-    $.ajax({
-        type: "post",
-        url: "../php/uploadPost.php",
-        data: formData,
-        processData: false,
-        contentType: false,
+      $.ajax({
+          type: "post",
+          url: "../php/uploadPost.php",
+          data: formData,
+          processData: false,
+          contentType: false,
+          success: function (response) {
+              console.log(response);
+              // $("#favDialog").css("display", "none")
+              favDialog.close();
+              document.body.classList.remove("bloquear-scroll");
+              $("#myModal").css("display", "block");
+              formSubmitted = false; // Restablecer el estado del formulario después de que se complete la solicitud AJAX
+          },
+          error: function (error) {
+              console.error(error);
+              formSubmitted = false; // Restablecer el estado del formulario en caso de error
+          }
+      });
+
+  });
+
+  $(".close").click(function() {
+              $("#myModal").css("display", "none");
+          });
+
+          // Recargar la página cuando se haga clic en el botón Aceptar
+          $("#reloadPage").click(function() {
+              location.reload();
+          });
+
+      });
+
+  $(document).on('click', '#btn_delete', function () {
+      // Obtener el identificador del post
+      let postId = $(this).data('post-id');
+      let confirmDelete = confirm('¿Seguro que deseas borrar este post?');
+
+      $.ajax({
+        type: "POST",
+        url: '../php/deletePost.php',
+        data: { post_id: postId },
         success: function (response) {
-            console.log(response);
-            // $("#favDialog").css("display", "none")
-            favDialog.close();
-            document.body.classList.remove("bloquear-scroll");
-            $("#myModal").css("display", "block");
-            formSubmitted = false; // Restablecer el estado del formulario después de que se complete la solicitud AJAX
+          console.log("Post eliminado exitosamente");
+          location.reload()
         },
         error: function (error) {
-            console.error(error);
-            formSubmitted = false; // Restablecer el estado del formulario en caso de error
+          console.error("Error al eliminar el post:", error);
         }
-    });
-
-});
-
-$(".close").click(function() {
-            $("#myModal").css("display", "none");
-        });
-
-        // Recargar la página cuando se haga clic en el botón Aceptar
-        $("#reloadPage").click(function() {
-            location.reload();
-        });
-
+      });
     });
   </script>
 </body>
