@@ -26,9 +26,10 @@
 }
 
 .presentationLoginDiv{
-    background-color: rgb(38, 38, 101);
+   
     width: 50%;
     height: 600px;
+    background-color: rgba(0 158 219);/* ajusta la opacidad aquí */
 }
 
 .formLoginDiv{
@@ -160,7 +161,11 @@
     height: 200px;
     margin-left: 15%;
 
-    margin-top: 25%;
+
+}
+
+.centroTextoImagen img{
+    width: 100%;
 }
 
 .centroTextoImagen h1{

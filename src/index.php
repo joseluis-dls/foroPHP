@@ -78,7 +78,7 @@ if (!empty($_SESSION['active'])) {
                 } else {
                     // Si el usuario no carga una imagen, usa una imagen por defecto
                     $dir = "/foroPHP/src/img/default/default_user.jpg";
-                }
+                 }
 
                 // Verificar si las contraseñas coinciden
                 if ($password != $confirm_password) {
@@ -133,8 +133,8 @@ if (!empty($_SESSION['active'])) {
     <div id="Login">
         <div class="presentationLoginDiv">
             <div class="centroTextoImagen">
-                <h1>UNESforum</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores libero, voluptatem modi at quidem, velit vero ullam nulla dicta, repudiandae molestiae animi laudantium obcaecati aliquam possimus. Facilis numquam veniam veritatis.</p>
+                <img src="./img/logoUnesForum.png" alt="">
+                <p>UNESforum es el lugar indicado para poder expresarte, si tienes algo que decir siempre habra gente que quiera escuchar.</p>
             </div>
         </div>
 
