@@ -1,5 +1,5 @@
 # Ignora el archivo connection.php
 
-connection.php
+src/connection.php
 img/posts/
 img/users/
