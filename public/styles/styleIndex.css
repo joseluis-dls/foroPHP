@@ -1,0 +1,223 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200;1,6..12,400&family=Roboto+Mono:wght@200&family=Sedgwick+Ave+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200&family=Nunito+Sans:ital,opsz,wght@0,6..12,200;1,6..12,400&family=Roboto+Mono:wght@200&family=Sedgwick+Ave+Display&display=swap');
+/* Estilos generales */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Manrope', sans-serif;
+    /* font-size: 40px; */
+}
+
+
+
+#Login {
+    position: absolute;
+    display: flex;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 600px;
+    background-color: #F9F9F9; 
+    box-shadow: -20px 40px 40px 10px rgba(0, 0, 0, 0.3); /* Sombra */
+    border-radius: 10px;
+    z-index: 1;
+}
+
+.presentationLoginDiv{
+   
+    width: 50%;
+    height: 600px;
+    background-color: rgba(0 158 219);/* ajusta la opacidad aquí */
+}
+
+.formLoginDiv{
+    width: 50%;
+    height: 600px;
+}
+#Login header {
+    text-align: center;
+    font-size: 50px;
+    margin-bottom: 5px;
+    font-weight: 200;
+}
+
+#Login form {
+    display: flex;
+    flex-direction: column;
+    font-weight: 500;
+}
+
+#Login label {
+    margin-bottom: 5px;
+    color: #352F44;
+    font-size: 25px;
+}
+
+#Login input {
+    font-size: 15px;
+    width: 70%;
+    height: 40px;
+    margin-left: 15%;
+    margin-bottom: 2%;
+    border-radius: 25px;
+    padding-left: 5%;
+    border: 1px solid rgb(155, 150, 150);
+}
+
+#Login input:hover{
+    transform: scaleX(105%);
+    transition: 200ms;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 7%;
+
+}
+
+#LoginForm button {
+ padding: 15px 25px;
+ border: unset;
+ border-radius: 15px;
+ color: #fbfbfb;
+ z-index: 1;
+ background: #0d30de;
+ cursor: pointer;
+ position: relative;
+ font-weight: 1000;
+ font-size: 17px;
+ -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+ box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+ transition: all 250ms;
+ overflow: hidden;
+ width: 70%;
+}
+
+#LoginForm button::before {
+ content: "";
+ position: absolute;
+ top: 0;
+ left: 0;
+ height: 100%;
+ width: 0;
+ border-radius: 15px;
+ background-color: #44b41d;
+ cursor: pointer;
+ z-index: -1;
+ -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+ box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+ transition: all 250ms
+}
+
+#LoginForm button:hover {
+ color: #e8e8e8;
+}
+
+#LoginForm button:hover::before {
+ width: 100%;
+}
+
+.terminos {
+    margin-top: 5%;
+    color: rgb(0, 0, 0); 
+    font-size: 12px;
+    text-align: center;
+}
+
+.terminos a {
+    color: #007bff; 
+    text-decoration: none;
+}
+
+.terminos a:hover {
+    text-decoration: underline; 
+}
+
+.textBienvenida{
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 80%;
+    margin-left: 10%;
+    text-align: center;
+}
+
+.textBienvenida h3{
+    color: rgb(159, 157, 157);
+    padding-bottom: 3%;
+}
+
+.textBienvenida h1{
+    font-size: 38px;
+    padding-bottom: 3%;
+    color: #3b4b99;
+}
+
+.centroTextoImagen{
+    text-align: center;
+    width: 70%;
+    height: 200px;
+    margin-left: 15%;
+
+
+}
+
+.centroTextoImagen img{
+    width: 100%;
+}
+
+.centroTextoImagen h1{
+    color: white;
+    font-size: 50px;
+    font-weight: 800;
+    padding-bottom: 5%;
+}
+
+.centroTextoImagen p{
+    color: white;
+    font-weight: 100;
+    font-size: 15px;
+}
+
+.button_register{
+    width: 70%;
+    height: 50px;
+    margin-left: 15%;
+}
+
+.button_register button{
+    padding: 15px 25px;
+    border: unset;
+    border-radius: 15px;
+    color: #fbfbfb;
+    z-index: 1;
+    background: #364486;
+    cursor: pointer;
+    position: relative;
+    font-weight: 1000;
+    font-size: 17px;
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    transition: all 250ms;
+    overflow: hidden;
+    width: 100%;
+}
+
+.terminos_login{
+    margin-top: 1%;
+    margin-bottom: 1%;
+    color: rgb(0, 0, 0); 
+    font-size: 12px;
+    text-align: center;
+}
+
+.alert{
+    margin-left: 15%;
+    font-weight: 800;
+}
+
+.icon-margin{
+    margin-right: 10px;
+}
