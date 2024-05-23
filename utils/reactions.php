@@ -67,6 +67,8 @@ function removeReaction() {
 function getReactions() {
     global $conn;
 
+    echo($conn)
+
     $post_id = isset($_POST['post_id']) ? intval($_POST['post_id']) : 0;
 
     if ($post_id) {
