@@ -9,6 +9,8 @@ mysqli_stmt_bind_param($query, "s", $user);
 mysqli_stmt_execute($query);
 $result = mysqli_stmt_get_result($query);
 
+$message = "Comment succesfully added"
+
 if (mysqli_num_rows($result) > 0) {
     $data = mysqli_fetch_assoc($result);
     $profile_photo = $data["profile_photo"];
