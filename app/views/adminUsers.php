@@ -17,7 +17,6 @@
         <div class="container-fluid d-flex justify-content-between align-items-center">
             <!-- Centra el título -->
             <div class="navbar-brand">
-
                 <div class="logo"><img src="../img/logo.png" alt=""></div>
             </div>
 
@@ -39,7 +38,7 @@
         </div>
     </nav>
     <div class="filtroBusqueda">
-
+        <!-- Aquí puedes añadir contenido relacionado con la búsqueda de usuarios si es necesario -->
     </div>
     <div class="contenedor">
         <div class="grid-tarjeta">
@@ -56,14 +55,13 @@
                             <option value="opcion1">Opción 1</option>
                             <option value="opcion2">Opción 2</option>
                             <option value="opcion3">Opción 3</option>
-
                         </select>
                     </div>
                 </div>
 
                 <div class="actions">
-                    <button><i class="fa-regular fa-trash-can"></i></button>
-                    <button><i class="fa-solid fa-ban"></i></button>
+                    <button><i class="fas fa-trash-alt"></i></button>
+                    <button><i class="fas fa-ban"></i></button>
                     <button>
                         <p>500</p>
                         <p>Reportes</p>
@@ -73,9 +71,8 @@
         </div>
     </div>
 
-    </div>
+    <script src="https://kit.fontawesome.com/c30a6641b2.js" crossorigin="anonymous"></script>
+    <script src="../js/app.js"></script>
 </body>
-<script src="https://kit.fontawesome.com/c30a6641b2.js" crossorigin="anonymous"></script>
-<script src="../js/app.js"></script>
 
 </html>

@@ -17,7 +17,6 @@
         <div class="container-fluid d-flex justify-content-between align-items-center">
             <!-- Centra el título -->
             <div class="navbar-brand">
-
                 <div class="logo"><img src="../img/logo.png" alt=""></div>
             </div>
 
@@ -39,7 +38,7 @@
         </div>
     </nav>
     <div class="contenedor">
-        <table border="1">
+        <table class="table table-bordered table-striped">
             <thead>
                 <tr>
                     <th>ID Reporte</th>
@@ -51,7 +50,6 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- Aquí irían las filas de datos, puedes agregarlas dinámicamente o estáticamente según tus necesidades -->
                 <tr>
                     <td>1</td>
                     <td>Usuario1</td>
@@ -59,18 +57,20 @@
                     <td>Motivo1</td>
                     <td>2024-03-07</td>
                     <td>
-                        <button class="btn btn-primary">Ver Post</button>
-                        <button class="btn btn-danger">Borrar Post</button>
-                        <button class="btn btn-warning">Bloquear Usuario</button>
+                        <button class="btn btn-primary" onclick="verPost(1)">Ver Post</button>
+                        <button class="btn btn-danger" onclick="borrarPost(1)">Borrar Post</button>
+                        <button class="btn btn-warning" onclick="bloquearUsuario(1)">Bloquear Usuario</button>
                     </td>
                 </tr>
-
+                <!-- Otras filas de datos se pueden agregar dinámicamente aquí -->
             </tbody>
         </table>
     </div>
-
+    <footer>
+        <p>© 2024 UNESforum. Todos los derechos reservados.</p>
+    </footer>
+    <script src="https://kit.fontawesome.com/c30a6641b2.js" crossorigin="anonymous"></script>
+    <script src="../js/app.js"></script>
 </body>
-<script src="https://kit.fontawesome.com/c30a6641b2.js" crossorigin="anonymous"></script>
-<script src="../js/app.js"></script>
 
 </html>
